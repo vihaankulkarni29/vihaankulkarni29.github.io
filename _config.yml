@@ -3,6 +3,8 @@
 title: "Vihaan Kulkarni | Computational Biologist"
 email: vihaankulkarni29@gmail.com
 description: "Personal website and portfolio of Vihaan Kulkarni, a computational biologist specializing in bioinformatics and data science."
+url: "https://vihaankulkarni29.github.io"  # Add this line
+baseurl: ""  # Add this line
 twitter_username: # Add your twitter username if you have one, or delete this line
 github_username: vihaankulkarni29
 minimal_mistakes_skin: default
