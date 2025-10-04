@@ -1,17 +1,17 @@
 source "https://rubygems.org"
 
-gem "github-pages", group: :jekyll_plugins
+# This will help ensure the proper Jekyll version is running.
+gem "jekyll", "~> 4.2"
 
-gem "tzinfo-data"
-gem "wdm", "~> 0.1.0" if Gem.win_platform?
+# Windows and JRuby CNS - see https://github.com/jekyll/jekyll/pull/6212
+gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 
-# If you have any plugins, put them here!
+# Plugins
 group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-sitemap"
-  gem "jekyll-gist"
-  gem "jekyll-feed"
-  gem "jemoji"
-  gem "jekyll-include-cache"
-  gem "jekyll-algolia"
+  gem "jekyll-feed", "~> 0.15"
+  gem "jekyll-gist", "~> 1.5"
+  gem "jekyll-include-cache", "~> 0.2"
+  gem "jekyll-paginate", "~> 1.1"
+  gem "jekyll-sitemap", "~> 1.4"
+  gem "jekyll-tabs", "~> 1.2"
 end
