@@ -1,61 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vihaan Kulkarni | Computational Biologist</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vihaan Kulkarni | Computational Biologist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-color: #212529;
+            --link-color: #007bff;
+            --border-color: #dee2e6;
+            --background-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Header & Navigation */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 2rem;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .main-nav a:hover {
+            color: var(--link-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: left;
+            margin-bottom: 6rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0;
+        }
+
+        /* Projects Section */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-list-item {
+            margin-bottom: 2.5rem;
+        }
+        
+        .project-list-item h3 {
+            margin-top: 0;
+            margin-bottom: 0.25rem;
+            font-size: 1.25rem;
+        }
+
+        .project-list-item a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .project-list-item a:hover {
+            color: var(--link-color);
+        }
+
+        .project-list-item p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .main-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">Vihaan Kulkarni</div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>Vihaan Kulkarni</h1>
-        <h2>Computational Biologist & Bioinformatics Tool Builder</h2>
-        <p>
-          Decoding the microbial world, one algorithm at a time.<br />
-          I build <strong>AI-driven genomic pipelines</strong> that accelerate antimicrobial resistance research.
-        </p>
-        <a href="projects.html" class="btn">Explore My Work</a>
-      </div>
-      <div class="hero-image">
-        <img src="assets/images/profile.jpg" alt="Vihaan Kulkarni" />
-      </div>
+    <div class="container">
+        <header class="main-header">
+            <a href="/" class="logo">Vihaan Kulkarni</a>
+            <nav class="main-nav">
+                <a href="/about/">About</a>
+                <a href="/projects/">Projects</a>
+                <a href="/research/">Research</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Decoding Biology with Code.</h1>
+                <p>I build custom bioinformatics tools and AI-driven pipelines to accelerate research in antimicrobial resistance and computational genomics.</p>
+            </section>
+
+            <section class="projects-section">
+                <h2 class="section-title">Featured Tools & Projects</h2>
+
+                <div class="project-list-item">
+                    <a href="#">
+                        <h3>FastaAAExtractor</h3>
+                        <p>Automates targeted amino acid extraction from unannotated genomic data, reducing manual curation by over 90%.</p>
+                    </a>
+                </div>
+
+                <div class="project-list-item">
+                    <a href="#">
+                        <h3>WildTypeAligner</h3>
+                        <p>A Python script to automate batch pairwise alignment of thousands of protein sequences against a reference to rapidly identify mutations.</p>
+                    </a>
+                </div>
+
+                <div class="project-list-item">
+                     <a href="#">
+                        <h3>NCBI_Genome_Harvester</h3>
+                        <p>A python based tool which helps researchers in downloading bacterial genomes with rich metadata.</p>
+                    </a>
+                </div>
+                
+                 <div class="project-list-item">
+                     <a href="/projects/">
+                        <h3>View All Projects &rarr;</h3>
+                    </a>
+                </div>
+
+            </section>
+        </main>
+        
+        <footer class="main-footer">
+            <p>&copy; 2025 Vihaan Kulkarni</p>
+        </footer>
     </div>
-  </section>
 
-  <section class="highlight">
-    <div class="highlight-grid">
-      <div class="highlight-card">
-        <h3>FastAAExtractor</h3>
-        <p>Automates amino acid extraction from genomic data, reducing manual curation by 90%.</p>
-      </div>
-      <div class="highlight-card">
-        <h3>WildTypeAligner</h3>
-        <p>Detects amino acid substitutions in resistance genes using custom EMBOSS-style alignment.</p>
-      </div>
-      <div class="highlight-card">
-        <h3>MetaAcrPipeline</h3>
-        <p>Maps AcrAB-TolC protein variation across Indian *E. coli* isolates with geographic precision.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Vihaan Kulkarni · Computational Biology & Genomics · Version 2025.1</p>
-  </footer>
 </body>
 </html>
+
