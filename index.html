@@ -3,62 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vihaan Kulkarni - Computational Biologist building next-generation bioinformatics tools and pipelines." />
   <title>Vihaan Kulkarni | Computational Biologist</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-  <header>
-    <nav>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container">
       <h1 class="logo">Vihaan Kulkarni</h1>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section id="hero">
+  <!-- HERO -->
+  <section class="hero">
     <div class="hero-content">
-      <h2>Computational Biologist & Bioinformatics Innovator</h2>
-      <p>Building open-source tools and pipelines to understand antimicrobial resistance, efflux systems, and protein-level variation across microbial genomes.</p>
-      <a href="projects.html" class="btn">Explore My Work</a>
+      <h2>Computational Biologist</h2>
+      <p>Decoding the microbial world, one algorithm at a time.</p>
+      <a href="#projects" class="btn-primary">Explore My Work</a>
+    </div>
+    <div class="background-glow"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="profile.jpg" alt="Vihaan Kulkarni" />
+      </div>
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          As a computational biologist, I build bioinformatics tools that transform biological data into actionable insights — focusing on antimicrobial resistance and comparative genomics.
+          I’m passionate about bridging <strong>biology</strong> and <strong>software engineering</strong> to uncover evolutionary patterns that shape resistance mechanisms.
+        </p>
+        <p>
+          Currently, I work on creating reproducible pipelines for <strong>protein structure–function analysis</strong>, 
+          developing Python-based tools like <em>FastAAExtractor</em>, <em>WildTypeAligner</em>, and <em>NCBI_Genome_Extractor</em>.
+          My broader mission: enabling open, accessible, and data-driven AMR research worldwide.
+        </p>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
     </div>
   </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Decoding the Microbial World, One Algorithm at a Time
-As a computational biologist, I build bioinformatics tools that transform complex biological data into actionable insights—specifically targeting one of healthcare's most pressing challenges: antimicrobial resistance.
-Over the past year, I've immersed myself in the intersection of genomics and software development. Working as a computational biologist at IISER Pune, I've designed tools that process genomic data faster and extract more meaningful patterns from sequence information. Each tool addresses a specific bottleneck in AMR research—whether it's identifying resistance genes, tracking mutation pathways, or analyzing evolutionary patterns.
-My approach combines Python-based data pipelines with biological intuition. Technologies like Biopython and Pandas aren't just libraries to me—they're instruments for asking deeper questions about microbial evolution. When I read papers on resistance mechanisms, I'm simultaneously thinking: How can I build a tool that makes this research more scalable?
-The Vision
-My goal is to contribute to predictive frameworks that can identify resistance-conferring mutations within genomes before clinical resistance emerges. I'm particularly interested in how structural prediction tools like AlphaFold can enhance our understanding of how mutations alter protein function at the molecular level.
-Currently seeking opportunities to collaborate on research that combines genomic analysis, machine learning, and structural biology to stay one step ahead of evolving pathogens. If your lab or organization is tackling antimicrobial resistance through computational approaches, I'd welcome the conversation.
-    </p>
-    <p>
-      I specialize in creating **bioinformatics pipelines** and **visualization tools** for comparative genomics.
-      My open-source projects — <a href="https://github.com/vihaankulkarni29/FastAAExtractor" target="_blank">FastAAExtractor</a>,
-      <a href="https://github.com/vihaankulkarni29/WildTypeAligner" target="_blank">WildTypeAligner</a>, and
-      <a href="https://github.com/vihaankulkarni29/ncbi_genome_extractor" target="_blank">NCBI_Genome_Extractor</a> —
-      are part of a larger vision to make large-scale AMR analysis reproducible and accessible.
-    </p>
+  <!-- PROJECTS -->
+  <section id="projects" class="projects-section">
+    <h2>Featured Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>FastAAExtractor</h3>
+        <p>Extracts amino acid sequences from large-scale genome datasets for AMR gene analysis.</p>
+        <a href="https://github.com/vihaankulkarni29/FastAAExtractor" target="_blank" class="btn-small">View on GitHub</a>
+      </div>
 
-    <p>
-      I’m currently exploring **protein structure-function relationships** within efflux systems like <em>AcrAB-TolC</em>,
-      and developing pipelines for analyzing mutational landscapes across environmental *E. coli* isolates.
-    </p>
+      <div class="project-card">
+        <h3>WildTypeAligner</h3>
+        <p>Compares isolate sequences against <em>E. coli</em> K-12 MG1655 to identify polymorphisms with EMBOSS-style reporting.</p>
+        <a href="https://github.com/vihaankulkarni29/WildTypeAligner" target="_blank" class="btn-small">View on GitHub</a>
+      </div>
 
-    <p>
-      My broader goal: to bridge **genomics and computation** to drive biological discovery, innovation, and therapeutic insight.
-    </p>
+      <div class="project-card">
+        <h3>NCBI_Genome_Extractor</h3>
+        <p>Automates extraction of gene sequences from NCBI datasets for comparative AMR studies.</p>
+        <a href="https://github.com/vihaankulkarni29/NCBI_Genome_Extractor" target="_blank" class="btn-small">View on GitHub</a>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 Vihaan Kulkarni | <a href="https://github.com/vihaankulkarni29">GitHub</a> | <a href="mailto:vihaan.kulkarni29@gmail.com">Email</a></p>
+  <!-- RESEARCH -->
+  <section id="research" class="research-section">
+    <h2>Research in Focus</h2>
+    <div class="research-grid">
+      <div class="research-card">
+        <h3>Antimicrobial Resistance Mapping</h3>
+        <p>Analyzing AMR gene evolution and spread using genome-scale datasets and bioinformatics pipelines.</p>
+      </div>
+      <div class="research-card">
+        <h3>Efflux System Dynamics</h3>
+        <p>Studying structural variations in AcrAB–TolC and related regulatory networks using protein modeling tools.</p>
+      </div>
+      <div class="research-card">
+        <h3>Integron & IS Region Analysis</h3>
+        <p>Mapping insertion sequences and integrons to understand mobile genetic elements driving AMR.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <h2>Contact</h2>
+    <p>If you'd like to collaborate or discuss AMR bioinformatics research, feel free to reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:vihaankulkarni29@gmail.com" class="btn-primary">Email Me</a>
+      <a href="https://github.com/vihaankulkarni29" target="_blank" class="btn-outline">GitHub</a>
+      <a href="https://linkedin.com/in/vihaankulkarni" target="_blank" class="btn-outline">LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Vihaan Kulkarni · Computational Biologist</p>
   </footer>
 </body>
 </html>
