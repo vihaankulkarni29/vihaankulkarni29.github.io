@@ -1,29 +1,28 @@
 ---
+title: About
+permalink: /about/
+---
 
-permalink: /projects/
+# About — Vihaan Kulkarni
 
-title: "Projects"
+**Decoding Biology with Code.** I build custom bioinformatics tools and AI-enhanced pipelines to accelerate research in antimicrobial resistance and computational genomics.
 
-layout: single
+## The Spark
+I’m a computational biologist who believes that careful software design and reproducible pipelines reveal deeper biological insight. My interest in antimicrobial resistance (AMR) began when I saw how slow, manual genomic workflows delayed actionable results. Since then, I’ve focused on automating the parts of research that hurt the most: extraction, alignment, and interpretable visualization.
 
-author\_profile: true
+## The Toolkit
+I combine strong software engineering (Python, Biopython, Pandas) with domain knowledge in bacterial genomics. I use:
+- Python & Biopython for sequence processing  
+- EMBOSS-style alignment paradigms and custom parsers for reproducible comparisons  
+- Structural prediction tools to connect sequence variation with protein function
+
+My open-source toolkit includes FastAAExtractor, WildTypeAligner, and MetaAcrPipeline — each designed to scale from a handful of isolates to thousands of genomes.
+
+## The Vision
+My goal is to build predictive and reproducible computational frameworks that identify resistance-conferring changes before they become clinically dominant. I aim to make AMR analysis accessible through clean tools, clear documentation, and reproducible pipelines so research teams can focus on biological insights rather than brittle scripts.
 
 ---
-Decoding the Microbial World, One Algorithm at a Time
-As a computational biologist, I build bioinformatics tools that transform complex biological data into actionable insights—specifically targeting one of healthcare's most pressing challenges: antimicrobial resistance.
 
-The Spark
-My journey began with a simple question: Why do bacteria evolve resistance faster than we can develop new antibiotics? This question led me down a path where microbiology met data science, where wet lab observations transformed into computational predictions, and where understanding mutation patterns could potentially save lives.
-
-The realization hit during my undergraduate studies—while researchers were documenting resistant strains after they emerged, we needed to predict these mutations before they happened. That's when I knew computational biology wasn't just an interest; it was where I needed to make my contribution.
-
-The Toolkit
-Over the past year, I've immersed myself in the intersection of genomics and software development. Working as a computational biologist at IISER Pune, I've designed tools that process genomic data faster and extract more meaningful patterns from sequence information. Each tool addresses a specific bottleneck in AMR research—whether it's identifying resistance genes, tracking mutation pathways, or analyzing evolutionary patterns.
-
-My approach combines Python-based data pipelines with biological intuition. Technologies like Biopython and Pandas aren't just libraries to me—they're instruments for asking deeper questions about microbial evolution. When I read papers on resistance mechanisms, I'm simultaneously thinking: How can I build a tool that makes this research more scalable?
-
-The Vision
-My goal is to contribute to predictive frameworks that can identify resistance-conferring mutations within genomes before clinical resistance emerges. I'm particularly interested in how structural prediction tools like AlphaFold can enhance our understanding of how mutations alter protein function at the molecular level.
-
-Currently seeking opportunities to collaborate on research that combines genomic analysis, machine learning, and structural biology to stay one step ahead of evolving pathogens. If your lab or organization is tackling antimicrobial resistance through computational approaches, I'd welcome the conversation.
-
+**Contact**  
+If you’re building tools, datasets or projects on AMR or microbial evolution and want to collaborate, let’s talk.  
+`vihaan.kulkarni29@gmail.com`

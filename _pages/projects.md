@@ -1,27 +1,82 @@
-permalink: /projects/ title: "Projects"
-Personal Bioinformatics Projects
-A collection of tools I have developed to solve common bottlenecks in genomics research and data analysis.
+---
 
-NCBI Genome Harvester
-An automated Python tool to download high-quality genomes and rich metadata from NCBI.
+title: Projects
 
-The Problem: Researchers often spend hours manually downloading individual genome files and then searching for their corresponding metadata (like BioSample, collection date, or AMR data). This process is slow, tedious, and prone to error.
+permalink: /projects/
 
-My Solution: I developed a command-line tool in Python that takes a simple list of accession numbers or a species query and automatically fetches both the FASTA files and a comprehensive set of metadata, organizing it all into a clean, analysis-ready table.
+---
 
-The Impact: This tool automates a process that could take hours, reducing it to minutes. It has been validated by the research community, generating over 10,000 impressions on LinkedIn.
 
-View on GitHub : https://github.com/vihaankulkarni29/ncbi_genome_extractor
 
-WildTypeAligner & SubScan 
-A two-part system to automate batch sequence alignment and mutation cataloging.
+\# Projects — Selected Tools \& Pipelines
 
-The Problem: Identifying amino acid substitutions across dozens or hundreds of sequences requires manually running pairwise alignments against a reference and then painstakingly scanning each output file to find the differences. This is a significant time sink in comparative genomics.
 
-My Solution: I built a system where WildTypeAligner automates the batch pairwise alignment of thousands of protein sequences against a reference, and SubScan then automatically parses all the output files, identifies every substitution, and consolidates the findings into a single, analysis-ready .csv file.
 
-The Impact: This system fully automates a workflow that would take several hours of manual work, reducing it to under two minutes while eliminating the potential for human error.
+Below are compact case-studies of the tools I develop. Each one is engineered for reproducibility, clear inputs/outputs, and publication-ready results.
 
-View on GitHub: https://github.com/vihaankulkarni29/wildtype-aligner
-                https://github.com/vihaankulkarni29/SubScan
+
+
+---
+
+
+
+\## FastAAExtractor  
+
+\*\*One-line:\*\* Fast, reproducible extraction of amino-acid sequences from FASTA + coordinate tables.  
+
+\*\*Problem:\*\* Extracting protein sequences for specific genes across many isolates is tedious and error-prone.  
+
+\*\*Solution:\*\* A tool that accepts a FASTA and a flexible coordinate file (TSV/CSV/XLSX), extracts requested gene sequences, avoids duplicates, and outputs per-isolate FASTA files.  
+
+\*\*Impact:\*\* Speeds up downstream comparative analyses and integrates with our WildTypeAligner pipeline.  
+
+\*\*Repo:\*\* https://github.com/vihaankulkarni29/FastAAExtractor
+
+
+
+---
+
+
+
+\## WildTypeAligner  
+
+\*\*One-line:\*\* EMBOSS Needle–style protein alignments with mutation-reporting and Excel summaries.  
+
+\*\*Problem:\*\* Standard alignments are hard to aggregate and compare across many isolates.  
+
+\*\*Solution:\*\* Produces Needle-style alignment outputs (identity, similarity, gaps, score) and per-comparison Excel reports; integrates SubScan for substitution detection.  
+
+\*\*Impact:\*\* Enables rapid screening for novel polymorphisms and creates reproducible evidence for presentations and publications.  
+
+\*\*Repo:\*\* https://github.com/vihaankulkarni29/WildTypeAligner
+
+
+
+---
+
+
+
+\## MetaAcrPipeline (Meta-AcrAB/TolC pipeline)  
+
+\*\*One-line:\*\* Large-scale pipeline to extract and analyze efflux system variation across \*E. coli\* isolates with geographic metadata.  
+
+\*\*Problem:\*\* Tracking protein-level variation across thousands of genomes with metadata is complex and time-consuming.  
+
+\*\*Solution:\*\* A metadata-aware pipeline that extracts AcrAB–TolC and associated regulators, aligns to K-12 references, and produces mutation maps and region-based summaries.  
+
+\*\*Impact:\*\* Designed for population-level surveillance and structural interpretation of resistance-associated mutations.  
+
+\*\*Repo:\*\* https://github.com/vihaankulkarni29/MetaAcrPipeline
+
+
+
+---
+
+
+
+\### Want a deeper case study?
+
+Each project has a short case study in its repository: problem, input formats, example commands, expected outputs, and minimal test data. If you’d like, I can migrate the short case-study content to a “Project details” section on the Projects page.
+
+
 
