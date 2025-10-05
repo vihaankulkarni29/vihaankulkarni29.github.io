@@ -4,40 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Vihaan Kulkarni</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <header>
-    <nav>
-      <h1 class="logo">Vihaan Kulkarni</h1>
+    <nav class="navbar">
+      <div class="logo">VK</div>
       <ul class="nav-links">
-        <li><a href="index.html">About</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="projects.html" class="active">Projects</a></li>
         <li><a href="research.html">Research</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="projects">
-    <h2>Open-Source Tools & Pipelines</h2>
-    <div class="project-grid">
+  <section class="content">
+    <h1>Featured Projects</h1>
+    <div class="projects-grid">
       <div class="project-card">
-        <h3>FastAAExtractor</h3>
-        <p>Extract amino acid sequences for specific genes using FASTA + coordinate data. Built for metagenomic-scale efficiency.</p>
-        <a href="https://github.com/vihaankulkarni29/FastAAExtractor" target="_blank" class="btn">View on GitHub</a>
+        <h2>FastAAExtractor</h2>
+        <p>Automated amino acid sequence extraction from genomic data using FASTA and coordinate files.</p>
       </div>
-
       <div class="project-card">
-        <h3>WildTypeAligner</h3>
-        <p>Generate EMBOSS Needle–style protein alignments with mutation and identity summaries. Used for polymorphism tracking.</p>
-        <a href="https://github.com/vihaankulkarni29/WildTypeAligner" target="_blank" class="btn">View on GitHub</a>
+        <h2>WildTypeAligner</h2>
+        <p>Custom EMBOSS-style alignment tool that detects amino acid substitutions in comparative genomics.</p>
       </div>
-
       <div class="project-card">
-        <h3>NCBI_Genome_Extractor</h3>
-        <p>Pipeline for large-scale extraction of bacterial genomes with high quality metadata integration.</p>
-        <a href="https://github.com/vihaankulkarni29/ncbi_genome_extractor" target="_blank" class="btn">View on GitHub</a>
+        <h2>MetaAcrPipeline</h2>
+        <p>Metagenomic pipeline for large-scale AcrAB-TolC protein variation mapping across Indian isolates.</p>
       </div>
     </div>
   </section>
