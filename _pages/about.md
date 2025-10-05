@@ -1,4 +1,14 @@
-permalink: /about/ title: "About"
+---
+
+permalink: /projects/
+
+title: "Projects"
+
+layout: single
+
+author\_profile: true
+
+---
 Decoding the Microbial World, One Algorithm at a Time
 As a computational biologist, I build bioinformatics tools that transform complex biological data into actionable insights—specifically targeting one of healthcare's most pressing challenges: antimicrobial resistance.
 
@@ -16,3 +26,4 @@ The Vision
 My goal is to contribute to predictive frameworks that can identify resistance-conferring mutations within genomes before clinical resistance emerges. I'm particularly interested in how structural prediction tools like AlphaFold can enhance our understanding of how mutations alter protein function at the molecular level.
 
 Currently seeking opportunities to collaborate on research that combines genomic analysis, machine learning, and structural biology to stay one step ahead of evolving pathogens. If your lab or organization is tackling antimicrobial resistance through computational approaches, I'd welcome the conversation.
+
