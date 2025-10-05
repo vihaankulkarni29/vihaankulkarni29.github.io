@@ -247,38 +247,6 @@
             text-decoration: none;
         }
 
-        /* Stats Section */
-        .stats-section {
-            background: var(--bg-alt);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
@@ -330,11 +298,6 @@
             .project-title {
                 font-size: 1.5rem;
             }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
         }
     </style>
 </head>
@@ -370,10 +333,31 @@
     <!-- Main Content -->
     <main>
         <div class="content-container">
-            
-            <!-- Stats Section -->
-            <div class="stats-section">
-                <div class="stats-grid">
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                
+                <!-- Project 1: FastaAAExtractor -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h2 class="project-title">FastaAAExtractor</h2>
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-status active">Active</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        A Python-based automation tool that extracts targeted amino acid sequences from unannotated genomic data. Designed to eliminate the manual curation bottleneck that slows down comparative genomics research, this tool reduces processing time by over 90% while maintaining accuracy.
+                    </p>
+                    <p class="project-description">
+                        The tool handles batch processing of FASTA files, supports custom extraction parameters, and includes robust error handling for real-world messy genomic data. It's particularly useful for researchers working with bacterial genomes in antimicrobial resistance studies.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Biopython</span>
+                        <span class="tech-badge">Batch Processing</span>
+                        <span class="tech-badge">Genomics</span>
+                    </div>
                     <div class="project-links">
                         <a href="projects/fastaaa-extractor.html" class="btn-primary">Read More →</a>
                         <a href="https://github.com/vihaankulkarni29/FastaAAExtractor" target="_blank" class="project-link">
@@ -469,43 +453,4 @@
         });
     </script>
 </body>
-</html>="stat-item">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">Active Projects</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Open Source</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">90%</span>
-                        <span class="stat-label">Time Reduction</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="projects-grid">
-                
-                <!-- Project 1: FastaAAExtractor -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h2 class="project-title">FastaAAExtractor</h2>
-                        <div class="project-meta">
-                            <span class="project-year">2024</span>
-                            <span class="project-status active">Active</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        A Python-based automation tool that extracts targeted amino acid sequences from unannotated genomic data. Designed to eliminate the manual curation bottleneck that slows down comparative genomics research, this tool reduces processing time by over 90% while maintaining accuracy.
-                    </p>
-                    <p class="project-description">
-                        The tool handles batch processing of FASTA files, supports custom extraction parameters, and includes robust error handling for real-world messy genomic data. It's particularly useful for researchers working with bacterial genomes in antimicrobial resistance studies.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Biopython</span>
-                        <span class="tech-badge">Batch Processing</span>
-                        <span class="tech-badge">Genomics</span>
-                    </div>
-                    <div class
+</html>
