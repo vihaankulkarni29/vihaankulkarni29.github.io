@@ -1,26 +1,92 @@
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  margin: 40px auto;
-  max-width: 800px;
-  line-height: 1.6;
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
   color: #333;
+  line-height: 1.6;
+  background: #f8f9fa;
 }
 
-h1 {
-  color: #1a73e8;
+header {
+  background: white;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #1a73e8;
+  margin: 0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #1a73e8;
+}
+
+#hero {
+  background: linear-gradient(to right, #1a73e8, #0077cc);
+  color: white;
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.btn {
+  background: white;
+  color: #1a73e8;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #e8f0fe;
+}
+
+#about {
+  background: white;
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
   color: #1a73e8;
-  margin-top: 40px;
+  margin-bottom: 1rem;
 }
 
-a {
-  color: #1a73e8;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #666;
 }
