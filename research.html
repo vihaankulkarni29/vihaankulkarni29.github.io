@@ -1,35 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research | Vihaan Kulkarni</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Vihaan Kulkarni</title>
+    <meta name="description" content="Research interests, publications, and contributions in bioinformatics and antimicrobial resistance.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --border: #e0e0e0;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 3rem;
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            max-width: 700px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 2rem;
+        }
+
+        .content-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .section-intro {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Research Interests */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .interest-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .interest-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .interest-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .interest-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Publications List */
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .publication-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .pub-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-authors {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .pub-venue {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .pub-link:hover {
+            text-decoration: underline;
+        }
+
+        .pub-status {
+            background: var(--bg-alt);
+            color: var(--text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Placeholder for no content */
+        .placeholder {
+            background: var(--bg-alt);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .placeholder p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            background: var(--bg-alt);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border);
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">VK</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="research.html" class="active">Research</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Vihaan Kulkarni</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <section class="content">
-    <h1>Research Interests</h1>
-    <p>
-      My research integrates computational biology and microbiology to study efflux systems,
-      insertion sequences, and regulatory networks involved in multidrug resistance.
-    </p>
-  </section>
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-container">
+            <h1 class="page-title">Research</h1>
+            <p class="page-subtitle">
+                My research interests, publications, and contributions to bioinformatics and antimicrobial resistance research.
+            </p>
+        </div>
+    </header>
 
-  <footer>
-    <p>© 2025 Vihaan Kulkarni</p>
-  </footer>
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+            
+            <!-- Research Interests -->
+            <section class="content-section">
+                <h2 class="section-title">Research Interests</h2>
+                <p class="section-intro">
+                    My work focuses on developing computational methods to address critical challenges in infectious disease research, with a particular emphasis on antimicrobial resistance.
+                </p>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <h3>Antimicrobial Resistance Genomics</h3>
+                        <p>
+                            Using computational approaches to track the evolution and spread of antimicrobial resistance genes across bacterial populations. Focus on developing tools for rapid identification and characterization of resistance mechanisms.
+                        </p>
+                    </div>
+                    <div class="interest-card">
+                        <h3>Pipeline Development</h3>
+                        <p>
+                            Building reproducible, scalable bioinformatics pipelines for genomic surveillance. Emphasis on tools that work in resource-limited settings and don't require extensive computational infrastructure.
+                        </p>
+                    </div>
+                    <div class="interest-card">
+                        <h3>Machine Learning in Genomics</h3>
+                        <p>
+                            Exploring AI-driven approaches for predicting resistance phenotypes from genomic data, identifying emerging resistance patterns, and accelerating variant annotation workflows.
+                        </p>
+                    </div>
+                    <div class="interest-card">
+                        <h3>Comparative Genomics</h3>
+                        <p>
+                            Developing methods for large-scale comparative analysis of bacterial genomes to identify regional mutation hotspots and understand geographic patterns in resistance evolution.
+                        </p>
+                    </div>
+                    <div class="interest-card">
+                        <h3>Open Science Tools</h3>
+                        <p>
+                            Creating accessible, well-documented bioinformatics software that democratizes access to sophisticated genomic analysis capabilities for researchers worldwide.
+                        </p>
+                    </div>
+                    <div class="interest-card">
+                        <h3>Clinical Bioinformatics</h3>
+                        <p>
+                            Bridging the gap between genomic data and clinical decision-making through tools that enable rapid, actionable insights for infectious disease management.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications -->
+            <section class="content-section">
+                <h2 class="section-title">Publications & Presentations</h2>
+                
+                <!-- Placeholder - Replace with actual publications -->
+                <div class="placeholder">
+                    <p>
+                        <strong>Publications section coming soon!</strong>
+                    </p>
+                    <p>
+                        This section will feature peer-reviewed publications, conference presentations, preprints, and other academic contributions.
+                    </p>
+                </div>
+
+                <!-- Template for when you have publications - uncomment and modify -->
+                <!--
+                <div class="publications-list">
+                    <div class="publication-item">
+                        <h3 class="pub-title">Your Paper Title Here</h3>
+                        <p class="pub-authors">
+                            <strong>Kulkarni, V.</strong>, Author2, A., Author3, B.
+                        </p>
+                        <p class="pub-venue">
+                            Journal Name, Volume(Issue), Pages (Year)
+                        </p>
+                        <div class="pub-links">
+                            <a href="#" class="pub-link">PDF →</a>
+                            <a href="#" class="pub-link">DOI →</a>
+                            <a href="#" class="pub-link">Code →</a>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </section>
+
+            <!-- Collaborations -->
+            <section class="content-section">
+                <h2 class="section-title">Collaborations & Contributions</h2>
+                <p class="section-intro">
+                    I believe in collaborative science and actively contribute to open-source projects and research initiatives.
+                </p>
+                
+                <!-- Placeholder - Replace with actual collaborations -->
+                <div class="placeholder">
+                    <p>
+                        <strong>Looking to collaborate!</strong>
+                    </p>
+                    <p>
+                        Interested in working together on AMR genomics, pipeline development, or bioinformatics tool creation? Feel free to reach out.
+                    </p>
+                </div>
+
+                <!-- Template for collaborations - uncomment when ready -->
+                <!--
+                <div class="publications-list">
+                    <div class="publication-item">
+                        <h3 class="pub-title">Project/Institution Name</h3>
+                        <p class="pub-authors">Role: Your role description</p>
+                        <p class="pub-venue">Brief description of the collaboration and your contributions.</p>
+                        <div class="pub-links">
+                            <a href="#" class="pub-link">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </section>
+
+            <!-- Talks & Workshops -->
+            <section class="content-section">
+                <h2 class="section-title">Talks & Workshops</h2>
+                
+                <!-- Placeholder -->
+                <div class="placeholder">
+                    <p>
+                        <strong>Presentations section coming soon!</strong>
+                    </p>
+                    <p>
+                        This will include conference talks, invited presentations, and workshop materials.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Vihaan Kulkarni. All projects are open source.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

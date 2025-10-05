@@ -1,36 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | Vihaan Kulkarni</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Vihaan Kulkarni</title>
+    <meta name="description" content="Learn about Vihaan Kulkarni's journey in bioinformatics and computational biology.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --border: #e0e0e0;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 3rem;
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 2rem;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .content-section ul {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            margin-left: 1.5rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-alt);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.375rem;
+            top: 0.25rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--bg);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border);
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">VK</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Vihaan Kulkarni</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="research.html">Research</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <section class="content">
-    <h1>About Me</h1>
-    <p>
-      I’m a bioinformatics researcher passionate about antimicrobial resistance and comparative genomics.
-      My work focuses on developing open-source tools for genome analysis — making data accessible,
-      reproducible, and insightful for the next generation of computational biologists.
-    </p>
-  </section>
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-container">
+            <h1 class="page-title">About Me</h1>
+            <p class="page-subtitle">
+                My journey from biology to code, and why I believe computational approaches are critical for solving the antimicrobial resistance crisis.
+            </p>
+        </div>
+    </header>
 
-  <footer>
-    <p>© 2025 Vihaan Kulkarni</p>
-  </footer>
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+            
+            <!-- Background Section -->
+            <section class="content-section">
+                <h2>Background</h2>
+                <p>
+                    My path into bioinformatics began with a simple frustration: watching talented researchers spend weeks manually processing data that could be automated in hours. During my undergraduate research in [your field], I witnessed firsthand how computational bottlenecks were slowing down critical discoveries in antimicrobial resistance research.
+                </p>
+                <p>
+                    That experience sparked a realization—the next major breakthroughs in biology won't come from better microscopes or faster sequencers alone. They'll come from better tools to make sense of the data we already have. This drove me to learn programming, pipeline development, and machine learning, always with one goal: making computational biology accessible and practical for working researchers.
+                </p>
+                <p>
+                    Today, I focus on building open-source tools that researchers can actually use—not theoretical frameworks that look good in papers but fail in practice. Every tool I develop is tested in real research workflows, with real data, solving real problems.
+                </p>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="content-section">
+                <h2>Why Antimicrobial Resistance Matters</h2>
+                <p>
+                    Antimicrobial resistance (AMR) is projected to cause 10 million deaths annually by 2050, surpassing cancer as a leading cause of mortality. Yet our ability to track and understand resistance mechanisms lags far behind the pace of bacterial evolution.
+                </p>
+                
+                <div class="highlight-box">
+                    <p>
+                        <strong>The core problem:</strong> Traditional microbiological approaches take days to weeks to identify resistance patterns. By the time results arrive, infections have progressed, inappropriate antibiotics have been prescribed, and resistance has potentially spread to new patients.
+                    </p>
+                </div>
+
+                <p>
+                    Computational genomics offers a path forward. By analyzing bacterial genomes, we can:
+                </p>
+                <ul>
+                    <li>Identify resistance genes in hours instead of days</li>
+                    <li>Track the spread of resistant strains across hospitals and regions</li>
+                    <li>Predict which mutations are likely to emerge next</li>
+                    <li>Design targeted interventions before outbreaks become crises</li>
+                </ul>
+
+                <h3>The Democratization Challenge</h3>
+                <p>
+                    The bottleneck isn't sequencing capacity—it's analysis. Many clinical labs and research institutions in low- and middle-income countries have access to genomic data but lack the computational infrastructure or expertise to analyze it effectively. My work focuses on building tools that bridge this gap: simple, robust, well-documented software that doesn't require a computer science degree to use.
+                </p>
+                <p>
+                    If we can democratize access to these analytical capabilities, we can enable a truly global surveillance network for antimicrobial resistance. That's the vision driving my work.
+                </p>
+            </section>
+
+            <!-- Philosophy Section -->
+            <section class="content-section">
+                <h2>Development Philosophy</h2>
+                <p>
+                    When building bioinformatics tools, I follow several core principles:
+                </p>
+                
+                <h3>1. Reproducibility Over Novelty</h3>
+                <p>
+                    I prioritize tools that produce consistent, reproducible results over cutting-edge methods that work only in ideal conditions. If researchers can't trust the output, the tool is useless regardless of how sophisticated the algorithm is.
+                </p>
+
+                <h3>2. Documentation Is Features</h3>
+                <p>
+                    A poorly documented tool is a broken tool. Every project includes comprehensive documentation, example workflows, and troubleshooting guides. If users need to email me to understand how to use the software, I've failed.
+                </p>
+
+                <h3>3. Open Source Always</h3>
+                <p>
+                    Science advances through collaboration and transparency. All my tools are open source, allowing researchers to inspect, modify, and improve the code. Proprietary bioinformatics software slows down research and creates unnecessary barriers.
+                </p>
+
+                <h3>4. Real-World Testing</h3>
+                <p>
+                    Every tool is developed in collaboration with researchers who will actually use it. I don't build solutions in search of problems—I solve problems that are actively blocking research.
+                </p>
+            </section>
+
+            <!-- Journey Section -->
+            <section class="content-section">
+                <h2>My Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-content">
+                            <h3>Developed MetaAcpPipeline</h3>
+                            <p>Built Snakemake-based pipeline for mapping protein variation across Indian E. coli isolates, identifying regional AMR mutation hotspots.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023-2024</div>
+                        <div class="timeline-content">
+                            <h3>Created FastaAAExtractor & WildTypeAligner</h3>
+                            <p>Developed automation tools for genomic data processing, reducing manual curation time by over 90% for research teams.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-content">
+                            <h3>[Your Education/Position]</h3>
+                            <p>Add your academic background, degree, institution, or current position here.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-content">
+                            <h3>[Significant Milestone]</h3>
+                            <p>Add another significant milestone—research project, publication, collaboration, etc.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Looking Forward -->
+            <section class="content-section">
+                <h2>Looking Forward</h2>
+                <p>
+                    My current focus is on integrating machine learning approaches into genomic surveillance workflows. I'm exploring how we can use predictive models not just to identify existing resistance patterns, but to forecast which mutations are likely to emerge in specific contexts.
+                </p>
+                <p>
+                    I'm also working on making these tools more accessible through cloud-based implementations and simplified user interfaces. The goal is a future where any researcher, anywhere in the world, can conduct sophisticated AMR genomic analysis with nothing more than a web browser.
+                </p>
+                <p>
+                    If you're interested in collaborating on any of these challenges, or if you have ideas for how computational approaches can accelerate your research, I'd love to hear from you.
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Vihaan Kulkarni. All projects are open source.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

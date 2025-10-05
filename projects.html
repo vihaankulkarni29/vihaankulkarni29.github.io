@@ -1,45 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Vihaan Kulkarni</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Vihaan Kulkarni</title>
+    <meta name="description" content="Open-source bioinformatics tools and pipelines developed by Vihaan Kulkarni.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --border: #e0e0e0;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 3rem;
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            max-width: 700px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 2rem;
+        }
+
+        .content-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .project-year {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .project-status {
+            background: var(--bg-alt);
+            color: var(--text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .project-status.active {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            background: var(--bg-alt);
+            padding: 0.35rem 0.85rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #0052a3;
+            text-decoration: none;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            background: var(--bg-alt);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border);
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">VK</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Vihaan Kulkarni</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <section class="content">
-    <h1>Featured Projects</h1>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h2>FastAAExtractor</h2>
-        <p>Automated amino acid sequence extraction from genomic data using FASTA and coordinate files.</p>
-      </div>
-      <div class="project-card">
-        <h2>WildTypeAligner</h2>
-        <p>Custom EMBOSS-style alignment tool that detects amino acid substitutions in comparative genomics.</p>
-      </div>
-      <div class="project-card">
-        <h2>MetaAcrPipeline</h2>
-        <p>Metagenomic pipeline for large-scale AcrAB-TolC protein variation mapping across Indian isolates.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-container">
+            <h1 class="page-title">Projects</h1>
+            <p class="page-subtitle">
+                Open-source bioinformatics tools designed to streamline genomic research workflows and accelerate antimicrobial resistance studies.
+            </p>
+        </div>
+    </header>
 
-  <footer>
-    <p>© 2025 Vihaan Kulkarni</p>
-  </footer>
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+            
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="project-links">
+                        <a href="projects/fastaaa-extractor.html" class="btn-primary">Read More →</a>
+                        <a href="https://github.com/vihaankulkarni29/FastaAAExtractor" target="_blank" class="project-link">
+                            GitHub →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: WildTypeAligner -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h2 class="project-title">WildTypeAligner</h2>
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-status active">Active</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        An automated batch pairwise alignment tool that processes thousands of protein sequences against a reference wild-type sequence to rapidly identify mutations and variants. Built to handle high-throughput sequence analysis workflows common in AMR surveillance studies.
+                    </p>
+                    <p class="project-description">
+                        WildTypeAligner integrates with standard BLAST algorithms while adding custom parsing and reporting features that make mutation identification straightforward. The tool generates detailed reports highlighting mutation positions, types, and frequencies across large sequence datasets.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">BLAST</span>
+                        <span class="tech-badge">Sequence Analysis</span>
+                        <span class="tech-badge">Mutation Detection</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/wildtype-aligner.html" class="btn-primary">Read More →</a>
+                        <a href="https://github.com/vihaankulkarni29/WildTypeAligner" target="_blank" class="project-link">
+                            GitHub →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: MetaAcpPipeline -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h2 class="project-title">MetaAcpPipeline</h2>
+                        <div class="project-meta">
+                            <span class="project-year">2023-2024</span>
+                            <span class="project-status active">Active</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        A comprehensive Snakemake-based computational pipeline designed to map protein variation across Indian E. coli isolates, with a focus on identifying regional mutation hotspots in antimicrobial resistance genes. This pipeline combines multiple analysis steps into a reproducible, scalable workflow.
+                    </p>
+                    <p class="project-description">
+                        The pipeline handles everything from raw sequence data to final visualization, including quality control, alignment, variant calling, and statistical analysis. It's designed for HPC environments but can scale down to run on standard workstations. Special attention was paid to making the pipeline configurable for different study designs and bacterial species.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Snakemake</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Pipeline Development</span>
+                        <span class="tech-badge">AMR Research</span>
+                        <span class="tech-badge">HPC</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/metaacp-pipeline.html" class="btn-primary">Read More →</a>
+                        <a href="https://github.com/vihaankulkarni29/MetaAcpPipeline" target="_blank" class="project-link">
+                            GitHub →
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Vihaan Kulkarni. All projects are open source.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
-</html>
+</html>="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Active Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Open Source</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">90%</span>
+                        <span class="stat-label">Time Reduction</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                
+                <!-- Project 1: FastaAAExtractor -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h2 class="project-title">FastaAAExtractor</h2>
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-status active">Active</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        A Python-based automation tool that extracts targeted amino acid sequences from unannotated genomic data. Designed to eliminate the manual curation bottleneck that slows down comparative genomics research, this tool reduces processing time by over 90% while maintaining accuracy.
+                    </p>
+                    <p class="project-description">
+                        The tool handles batch processing of FASTA files, supports custom extraction parameters, and includes robust error handling for real-world messy genomic data. It's particularly useful for researchers working with bacterial genomes in antimicrobial resistance studies.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Biopython</span>
+                        <span class="tech-badge">Batch Processing</span>
+                        <span class="tech-badge">Genomics</span>
+                    </div>
+                    <div class
