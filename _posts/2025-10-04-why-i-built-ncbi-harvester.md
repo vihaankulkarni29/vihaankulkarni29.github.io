@@ -1,12 +1,68 @@
-title: "Project Deep Dive: Why I Built the NCBI Genome Harvester" date: 2025-10-04
-Every bioinformatician knows the routine. Your research question requires analyzing hundreds of bacterial genomes. The first step, before any of the exciting science can happen, is the data acquisition. This often means a tedious, multi-hour journey through NCBI, downloading FASTA files one by one and then manually hunting down their corresponding metadata—collection dates, BioSample information, host data—from different databases.
+permalink: /projects/ title: "Projects" layout: single author\_profile: true
 
-This process is a classic research bottleneck. It's slow, prone to copy-paste errors, and frankly, a poor use of a researcher's time. I experienced this bottleneck firsthand during my work, and it became clear that this was a problem perfectly suited for an automated solution.
+Personal Bioinformatics Projects
 
-That's why I built the NCBI Genome Harvester.
+A collection of tools I have developed to solve common bottlenecks in genomics research and data analysis.
 
-My goal was simple: create a command-line tool that could take a list of accession numbers and, in a single command, download not just the genome sequences but also a rich, organized table of their metadata. I wanted to ensure the data was high-quality by design, so I added a feature to filter for genomes with complete metadata profiles.
 
-I built it in Python, leveraging the power of the Biopython library to interact with the NCBI Entrez API. The result is a tool that transforms a multi-hour manual task into a command that runs in a few minutes.
 
-The overwhelmingly positive response to this tool on LinkedIn confirmed my suspicion: this wasn't just my problem; it was a shared pain point in the research community. It reinforced a core belief that drives my work: the most impactful bioinformatics tools are often the ones that solve the "boring," unglamorous problems, freeing up researchers to focus on making discoveries.
+NCBI Genome Harvester
+
+An automated Python tool to download high-quality genomes and rich metadata from NCBI.
+
+
+
+The Problem: Researchers often spend hours manually downloading individual genome files and then searching for their corresponding metadata (like BioSample, collection date, or AMR data). This process is slow, tedious, and prone to error.
+
+
+
+My Solution: I developed a command-line tool in Python that takes a simple list of accession numbers or a species query and automatically fetches both the FASTA files and a comprehensive set of metadata, organizing it all into a clean, analysis-ready table.
+
+
+
+The Impact: This tool automates a process that could take hours, reducing it to minutes. It has been validated by the research community, generating over 10,000 impressions on LinkedIn.
+
+
+
+View on GitHub : https://github.com/vihaankulkarni29/ncbi\_genome\_extractor
+
+
+
+WildTypeAligner \& SubScan
+
+A two-part system to automate batch sequence alignment and mutation cataloging.
+
+
+
+The Problem: Identifying amino acid substitutions across dozens or hundreds of sequences requires manually running pairwise alignments against a reference and then painstakingly scanning each output file to find the differences. This is a significant time sink in comparative genomics.
+
+
+
+My Solution: I built a system where WildTypeAligner automates the batch pairwise alignment of thousands of protein sequences against a reference, and SubScan then automatically parses all the output files, identifies every substitution, and consolidates the findings into a single, analysis-ready .csv file.
+
+
+
+The Impact: This system fully automates a workflow that would take several hours of manual work, reducing it to under two minutes while eliminating the potential for human error.
+
+
+
+View WildTypeAligner on GitHub: https://github.com/vihaankulkarni29/wildtype-aligner  | View SubScan on GitHub : https://github.com/vihaankulkarni29/SubScan
+
+
+
+BlastPHitHarvester
+
+A command-line utility that automates data acquisition from a BLASTp query.
+
+
+
+The Problem: After running a BLASTp query to find homologous proteins, a researcher must manually download the full genome FASTA and metadata for each significant hit, which is a repetitive and time-consuming task.
+
+
+
+My Solution: This tool takes the output of a BLASTp search and automatically downloads the complete genome FASTA and associated high-quality metadata for every hit, preparing a clean dataset for downstream analysis.
+
+
+
+The Impact: Streamlines the post-BLAST data collection process, enabling researchers to move from discovery to analysis much faster.
+
