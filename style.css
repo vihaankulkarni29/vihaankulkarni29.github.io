@@ -111,3 +111,74 @@ footer {
 .project-card:hover {
   transform: translateY(-5px);
 }
+
+/* === Global Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Root Palette === */
+:root {
+  --primary: #008B8B;      /* Teal */
+  --accent: #7FFFD4;       /* Aquamarine */
+  --bg: #FFFFFF;
+  --text: #222831;
+}
+
+/* === Base === */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+  transition: all 0.3s ease;
+}
+
+/* === Headings === */
+h1, h2, h3 {
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 3rem;
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* === Links & Buttons === */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  position: relative;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* === Section Layout === */
+section {
+  padding: 80px 10%;
+}
+
+/* === Utility === */
+.glow {
+  text-shadow: 0 0 8px var(--accent);
+}
+
+.btn {
+  background-color: var(--primary);
+  color: var(--bg);
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--accent);
+  color: var(--text);
+}
