@@ -10,7 +10,7 @@
     <style>
         :root {
             --text-color: #212529;
-            --link-color: #007bff;
+            --link-color: #0056b3;
             --border-color: #dee2e6;
             --background-color: #ffffff;
         }
@@ -28,7 +28,7 @@
         .container {
             max-width: 720px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 0 2rem;
         }
 
         /* Header & Navigation */
@@ -36,8 +36,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 0;
-            margin-bottom: 4rem;
+            padding: 2.5rem 0;
+            margin-bottom: 5rem;
         }
 
         .logo {
@@ -50,7 +50,7 @@
         .main-nav a {
             text-decoration: none;
             color: var(--text-color);
-            margin-left: 2rem;
+            margin-left: 2.5rem;
             font-weight: 500;
             font-size: 1rem;
             transition: color 0.2s;
@@ -63,14 +63,14 @@
         /* Hero Section */
         .hero {
             text-align: left;
-            margin-bottom: 6rem;
+            margin-bottom: 7rem;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.25rem;
             font-weight: 700;
             color: var(--text-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
@@ -78,6 +78,7 @@
             font-size: 1.25rem;
             max-width: 600px;
             margin: 0;
+            color: #495057;
         }
 
         /* Projects Section */
@@ -85,8 +86,8 @@
             font-size: 1.5rem;
             font-weight: 700;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.75rem;
-            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            margin-bottom: 2.5rem;
         }
 
         .project-list-item {
@@ -103,22 +104,33 @@
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
+            display: block;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: background-color 0.2s, color 0.2s;
         }
 
         .project-list-item a:hover {
+            background-color: #f8f9fa;
             color: var(--link-color);
         }
 
         .project-list-item p {
             margin: 0;
             font-size: 1rem;
+            color: #6c757d;
+        }
+        
+        .view-all-link h3 {
+             color: var(--link-color);
+             font-weight: 700;
         }
 
         /* Footer */
         .main-footer {
             text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+            padding: 4rem 2rem;
+            margin-top: 5rem;
             border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
             color: #6c757d;
@@ -148,27 +160,27 @@
                 <h2 class="section-title">Featured Tools & Projects</h2>
 
                 <div class="project-list-item">
-                    <a href="#">
+                    <a href="/projects/#fastaaextractor">
                         <h3>FastaAAExtractor</h3>
                         <p>Automates targeted amino acid extraction from unannotated genomic data, reducing manual curation by over 90%.</p>
                     </a>
                 </div>
 
                 <div class="project-list-item">
-                    <a href="#">
+                    <a href="/projects/#wildtypealigner">
                         <h3>WildTypeAligner</h3>
                         <p>A Python script to automate batch pairwise alignment of thousands of protein sequences against a reference to rapidly identify mutations.</p>
                     </a>
                 </div>
 
                 <div class="project-list-item">
-                     <a href="#">
-                        <h3>NCBI_Genome_Harvester</h3>
-                        <p>A python based tool which helps researchers in downloading bacterial genomes with rich metadata.</p>
+                     <a href="/projects/#metaacppipeline">
+                        <h3>MetaAcpPipeline</h3>
+                        <p>A Snakemake-based pipeline that maps protein variation across Indian 'E. coli' isolates to identify regional mutation hotspots.</p>
                     </a>
                 </div>
                 
-                 <div class="project-list-item">
+                 <div class="project-list-item view-all-link">
                      <a href="/projects/">
                         <h3>View All Projects &rarr;</h3>
                     </a>
