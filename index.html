@@ -3,245 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vihaan Kulkarni | Computational Biologist</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Vihaan Kulkarni | Bioinformatics Developer</title>
+    <meta name="description" content="Bioinformatics developer building custom tools and AI-driven pipelines for antimicrobial resistance research and computational genomics.">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --background: #121826;
-            --text-primary: #F2F2F2;
-            --text-secondary: #A6A6A6;
-            --accent: #00E5FF;
-            --card-background: #1A2233;
-            --border-color: #2D3748;
+            --primary: #0066cc;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --border: #e0e0e0;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background);
-            color: var(--text-primary);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
         }
 
-        .container {
-            max-width: 960px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header & Navigation */
-        .main-header {
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2.5rem 0;
-            margin-bottom: 6rem;
         }
 
         .logo {
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
             text-decoration: none;
         }
 
-        .main-nav a {
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
             text-decoration: none;
-            color: var(--text-secondary);
-            margin-left: 2.5rem;
-            font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: color 0.2s;
         }
 
-        .main-nav a:hover {
-            color: var(--accent);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            margin-bottom: 8rem;
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            background: linear-gradient(45deg, var(--text-primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
         }
 
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem auto;
-            color: var(--text-secondary);
+        /* Header/Hero Section */
+        .header {
+            padding: 8rem 2rem 4rem;
+            background: var(--bg);
         }
-        
-        .cta-button {
-            background-color: var(--accent);
-            color: var(--background);
-            padding: 0.9rem 2.25rem;
-            border-radius: 8px;
-            text-decoration: none;
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
             font-weight: 700;
-            display: inline-block;
-            transition: transform 0.2s, box-shadow 0.2s;
+            color: var(--text);
+            margin-bottom: 0.5rem;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.15);
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .header-description {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .header-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .header-link:hover {
+            text-decoration: underline;
+        }
+
+        .header-photo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .photo-placeholder {
+            width: 240px;
+            height: 240px;
+            border-radius: 8px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Replace with actual photo */
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        .section-border {
+            border-top: 1px solid var(--border);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2.5rem;
         }
 
         /* Projects Section */
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 4rem;
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
         }
 
-        .project-list {
+        .project {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 200px 1fr;
             gap: 2rem;
         }
 
-        .project-card {
-            background-color: var(--card-background);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
+        .project-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badge {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            background: var(--bg-alt);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .project-link {
+            color: var(--primary);
             text-decoration: none;
-            color: var(--text-primary);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Mission Section */
+        .mission-content {
+            max-width: 800px;
+        }
+
+        .mission-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+        }
+
+        .contact-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-methods {
             display: flex;
             flex-direction: column;
+            gap: 1rem;
         }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            border-color: var(--accent);
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .project-card .icon {
-            margin-bottom: 1.5rem;
-            color: var(--accent);
+        .contact-label {
+            font-weight: 600;
+            color: var(--text);
+            min-width: 100px;
         }
-        
-        .project-card h3 {
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
         }
-        
-        .project-card p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            flex-grow: 1;
-        }
-        
-        .project-link {
-            font-weight: 500;
-            color: var(--text-primary);
-            display: inline-block;
-            margin-top: 1.5rem;
-            transition: color 0.2s;
-        }
-        .project-card:hover .project-link {
-            color: var(--accent);
+
+        .contact-item a:hover {
+            text-decoration: underline;
         }
 
         /* Footer */
-        .main-footer {
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
             text-align: center;
-            padding: 4rem 2rem;
-            margin-top: 6rem;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .footer-links a:hover {
-            color: var(--accent);
+            background: var(--bg-alt);
         }
 
+        footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border);
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .header-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .header-links {
+                justify-content: center;
+            }
+
+            .header-photo {
+                order: -1;
+            }
+
+            .project {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .project-meta {
+                margin-bottom: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="main-header">
-            <a href="/" class="logo">VK</a>
-            <nav class="main-nav">
-                <a href="/about/">About</a>
-                <a href="/projects/">Projects</a>
-                <a href="/research/">Research</a>
-                <a href="/contact/">Contact</a>
-            </nav>
-        </header>
-
-        <main>
-            <section class="hero">
-                <h1>Decoding Biology, One Algorithm at a Time.</h1>
-                <p>I build custom bioinformatics tools and AI-driven pipelines to accelerate research in antimicrobial resistance and computational genomics.</p>
-                <a href="/projects/" class="cta-button">Explore My Work</a>
-            </section>
-
-            <section class="projects-section">
-                <h2 class="section-title">Core Projects</h2>
-                <div class="project-list">
-                    <a href="/projects/#fastaaextractor" class="project-card">
-                        <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/><path d="m14 9l3-3l-3-3m-4 12l-3 3l3 3"/></g></svg></div>
-                        <h3>FastaAAExtractor</h3>
-                        <p>Automates targeted amino acid extraction from unannotated genomic data, reducing manual curation by over 90%.</p>
-                         <span class="project-link">View Details &rarr;</span>
-                    </a>
-                    <a href="/projects/#wildtypealigner" class="project-card">
-                        <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m-3-3l3 3l3-3m-6-12L9 3l3 3"/></svg></div>
-                        <h3>WildTypeAligner</h3>
-                        <p>A Python script to automate batch pairwise alignment against a reference to rapidly identify mutations.</p>
-                         <span class="project-link">View Details &rarr;</span>
-                    </a>
-                    <a href="/projects/#metaacppipeline" class="project-card">
-                        <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 20l-2-2l2-2m-2 2h16m-2-8l2-2l-2-2m-2-2L8 4L4 8m14 4l-4 4l-4-4"/></svg></div>
-                        <h3>MetaAcpPipeline</h3>
-                        <p>A Snakemake pipeline that maps protein variation across Indian 'E. coli' isolates to identify regional mutation hotspots.</p>
-                         <span class="project-link">View Details &rarr;</span>
-                    </a>
-                </div>
-            </section>
-        </main>
-        
-        <footer class="main-footer">
-            <div class="footer-links">
-                 <a href="mailto:vihaankulkarni29@gmail.com">Email</a>
-                 <a href="https://www.linkedin.com/in/vihaan-kulkarni-aa8668248/">LinkedIn</a>
-                 <a href="https://github.com/vihaankulkarni29">GitHub</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">Vihaan Kulkarni</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <p style="margin-top: 1.5rem;">&copy; 2025 Vihaan Kulkarni</p>
-        </footer>
-    </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="home" class="header">
+        <div class="header-container">
+            <div class="header-content">
+                <h1>Vihaan Kulkarni</h1>
+                <p class="header-subtitle">Decoding Biology with Code</p>
+                <p class="header-description">
+                    I build custom bioinformatics tools and AI-driven pipelines to accelerate research in antimicrobial resistance and computational genomics. My work focuses on making complex genomic analysis accessible and efficient for researchers.
+                </p>
+                <div class="header-links">
+                    <a href="https://github.com/vihaankulkarni29" target="_blank" class="header-link">GitHub →</a>
+                    <a href="https://www.linkedin.com/in/vihaan-kulkarni-aa8668248/" target="_blank" class="header-link">LinkedIn →</a>
+                    <a href="mailto:vihaankulkarni29@gmail.com" class="header-link">Email →</a>
+                </div>
+            </div>
+            <div class="header-photo">
+                <div class="photo-placeholder">
+                    <!-- Replace this div with: <img src="path-to-your-photo.jpg" alt="Vihaan Kulkarni"> -->
+                    Your photo here<br>(240×240px)
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-border">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-list">
+                
+                <!-- Project 1 -->
+                <div class="project">
+                    <div class="project-meta">
+                        <div>Python, Biopython</div>
+                        <div style="margin-top: 0.25rem;">2024</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>FastaAAExtractor</h3>
+                        <p>
+                            Automates targeted amino acid extraction from unannotated genomic data, reducing manual curation time by over 90%. Built for researchers working with large-scale genomic datasets who need efficient preprocessing tools.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Genomics</span>
+                            <span class="tech-badge">Automation</span>
+                            <span class="tech-badge">Open Source</span>
+                        </div>
+                        <a href="https://github.com/vihaankulkarni29/FastaAAExtractor" target="_blank" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project">
+                    <div class="project-meta">
+                        <div>Python, BLAST</div>
+                        <div style="margin-top: 0.25rem;">2024</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>WildTypeAligner</h3>
+                        <p>
+                            A Python script to automate batch pairwise alignment of thousands of protein sequences against a reference to rapidly identify mutations and variants. Streamlines the mutation detection workflow for high-throughput sequence analysis. It also utilizes a automated reference sequence generator using SEPI (my other project)
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Sequence Analysis</span>
+                            <span class="tech-badge">Batch Processing</span>
+                        </div>
+                        <a href="https://github.com/vihaankulkarni29/wildtype-aligner" target="_blank" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project">
+                    <div class="project-meta">
+                        <div>Command Line, Python</div>
+                        <div style="margin-top: 0.25rem;">2023-2024</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>NCBI Genome Extractor</h3>
+                        <p>
+                            A python based scripts that can download thousands of bacterial genome fastas with high quality metadata integration within minutes
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">AMR Research</span>
+                            <span class="tech-badge">Pipeline</span>
+                            <span class="tech-badge">Reproducibility</span>
+                        </div>
+                        <a href="https://github.com/vihaankulkarni29/ncbi_genome_extractor" target="_blank" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="section-border">
+        <div class="container">
+            <h2 class="section-title">Why Antimicrobial Resistance Needs Bioinformatics</h2>
+            <div class="mission-content">
+                <p>
+                    Antimicrobial resistance (AMR) is one of the most pressing global health threats, with drug-resistant infections causing hundreds of thousands of deaths annually. Yet, our ability to track, understand, and combat resistance mechanisms is severely limited by the complexity of genomic data.
+                </p>
+                <p>
+                    Traditional microbiological approaches are too slow to keep pace with rapidly evolving pathogens. Computational methods offer a solution—enabling us to analyze thousands of genomes, identify resistance patterns, and predict emerging threats before they spread.
+                </p>
+                <p>
+                    My work focuses on building practical tools that bridge the gap between raw genomic data and actionable insights. By automating tedious analysis workflows and making sophisticated bioinformatics accessible to researchers without extensive programming backgrounds, we can accelerate the pace of AMR research and ultimately save lives.
+                </p>
+                <p>
+                    The future of infectious disease research lies at the intersection of biology and computation. I'm committed to developing open-source solutions that democratize access to powerful analytical tools and help researchers worldwide tackle this critical challenge.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-border">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <p>
+                    I'm always interested in discussing collaborations, bioinformatics challenges, or opportunities to contribute to AMR research. Feel free to reach out through any of the following channels:
+                </p>
+                <div class="contact-methods">
+                    <div class="contact-item">
+                        <span class="contact-label">Email:</span>
+                        <a href="mailto:vihaankulkarni29@gmail.com">vihaankulkarni29@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">GitHub:</span>
+                        <a href="https://github.com/vihaankulkarni29" target="_blank">github.com/vihaankulkarni29</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">LinkedIn:</span>
+                        <a href="https://www.linkedin.com/in/vihaan-kulkarni-aa8668248/" target="_blank">linkedin.com/in/vihaankulkarni29</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Vihaan Kulkarni. All projects are open source.</p>
+        </div>
+    </footer>
+
     <script>
-      lucide.createIcons();
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
-
