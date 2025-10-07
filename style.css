@@ -97,7 +97,7 @@ nav .container {
 
 /* Sections */
 section {
-    padding: 80px 20px;
+    padding: 60px 20px;
 }
 
 #hero {
@@ -418,5 +418,14 @@ footer {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+/* About Me Section Spacing */
+#about h2 {
+  margin-top: 40px; /* Adds space above the "Why AMR?" and "My Mission" headings */
+}
+
+#about h2:first-of-type {
+  margin-top: 0; /* Ensures there's no extra space above "My Origin Story" */
 }
 }
