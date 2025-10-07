@@ -137,6 +137,12 @@ section {
     color: #cccccc;
 }
 
+.hero-cta-buttons {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+}
+
 .accent {
     color: var(--accent);
 }
