@@ -65,12 +65,34 @@
                 <h2>My Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <h3>Project 1</h3>
-                        <p>Description of project 1.</p>
+                        <div class="project-image"></div>
+                        <h3>FastaAAExtractor</h3>
+                        <p>Automated amino acid extraction from genomic data, reducing manual curation by over 90%.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Biopython</span>
+                            <span class="tech-tag">Genomics</span>
+                        </div>
                     </div>
                     <div class="project-card">
-                        <h3>Project 2</h3>
-                        <p>Description of project 2.</p>
+                        <div class="project-image"></div>
+                        <h3>WildTypeAligner</h3>
+                        <p>Batch pairwise alignment tool for identifying mutations in protein sequences.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">BLAST</span>
+                            <span class="tech-tag">Bioinformatics</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image"></div>
+                        <h3>MetaAcpPipeline</h3>
+                        <p>Snakemake-based pipeline for mapping protein variation in bacterial isolates.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Snakemake</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AMR</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,10 +113,82 @@
         </section>
     </main>
 
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close">&times;</button>
+            <h2 id="modal-title">Project Title</h2>
+            <div class="modal-visual">
+                <div class="modal-image-placeholder"></div>
+            </div>
+            <h4>The Challenge</h4>
+            <p id="modal-challenge">Description of the challenge faced in this project.</p>
+            <h4>My Solution</h4>
+            <ul id="modal-solution">
+                <li>Solution point 1</li>
+                <li>Solution point 2</li>
+                <li>Solution point 3</li>
+            </ul>
+            <h4>Key Outcomes</h4>
+            <p id="modal-outcomes">Description of the results and impact.</p>
+            <div class="modal-buttons">
+                <a href="#" class="btn btn-secondary" id="view-code">View Code</a>
+                <a href="#" class="btn" id="live-demo">Live Demo</a>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 Personal Portfolio</p>
         </div>
     </footer>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('project-modal');
+        const modalClose = document.querySelector('.modal-close');
+        const modalOverlay = document.querySelector('.modal-overlay');
+
+        // Show modal when project card is clicked
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Hide modal when close button is clicked
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Hide modal when overlay is clicked
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        // Add fade-in-up class to sections and observe them
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('fade-in-up');
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
