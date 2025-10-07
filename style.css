@@ -20,7 +20,7 @@ html {
 
 body {
     font-family: 'Lato', sans-serif;
-    font-size: px;
+    font-size: 18px;
     line-height: 1.6;
     color: var(--primary-text);
     background-color: var(--primary-bg);
@@ -29,6 +29,19 @@ body {
 h1, h2, h3 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
+}
+
+/* --- Heading Font Sizes --- */
+h1 {
+  font-size: 2.8rem; /* For the main hero section title */
+}
+
+h2 {
+  font-size: 2rem;   /* For main section titles like "My Projects" */
+}
+
+h3 {
+  font-size: 1.5rem; /* For project card titles */
 }
 
 /* Global Link Styling */
@@ -263,6 +276,11 @@ section {
 .project-link:hover {
     background-color: var(--accent);
     color: var(--primary-bg);
+}
+
+.project-link-wrapper {
+  color: inherit;
+  text-decoration: none;
 }
 
 .contact-link {
