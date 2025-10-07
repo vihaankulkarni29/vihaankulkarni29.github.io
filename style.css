@@ -86,10 +86,15 @@ nav .container {
     padding: 1rem 20px;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent);
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #EAEAEA;
+  text-decoration: none;
+}
+
+.nav-brand span {
+  color: #00a8e8; /* Accent color */
 }
 
 .nav-links {
@@ -151,12 +156,14 @@ section {
 }
 
 .social-links a i {
-  font-size: 1.8rem; /* Makes the social icons a bit larger */
-  transition: color 0.3s ease;
+  font-size: 2.2rem; /* Increase icon size */
+  color: #EAEAEA;    /* Set default color to light grey/white */
+  transition: all 0.3s ease;
 }
 
 .social-links a:hover i {
-  color: #00a8e8; /* Uses your accent color on hover */
+  color: #00a8e8;         /* Use your accent color on hover */
+  transform: scale(1.1); /* Add a slight zoom effect on hover */
 }
 
 .accent {
