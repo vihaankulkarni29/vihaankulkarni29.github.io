@@ -137,10 +137,26 @@ section {
     color: #cccccc;
 }
 
-.hero-cta-buttons {
+/* --- Hero Section Actions Layout --- */
+.hero-actions {
   margin-top: 24px;
   display: flex;
-  gap: 16px;
+  align-items: center; /* Vertically aligns the button and icons */
+  gap: 20px; /* Creates space between the button and the icons */
+}
+
+.social-links {
+  display: flex;
+  gap: 16px; /* Space between the social icons */
+}
+
+.social-links a i {
+  font-size: 1.8rem; /* Makes the social icons a bit larger */
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover i {
+  color: #00a8e8; /* Uses your accent color on hover */
 }
 
 .accent {
