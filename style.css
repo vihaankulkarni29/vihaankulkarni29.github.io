@@ -39,25 +39,15 @@ a {
 }
 
 /* Scroll Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .fade-in-up {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in-up.animate {
-    animation: fadeInUp 0.6s ease forwards;
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Layout */
@@ -71,7 +61,8 @@ a {
 header {
     position: sticky;
     top: 0;
-    background-color: var(--secondary-bg);
+    background-color: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(10px);
     z-index: 1000;
 }
 
@@ -106,7 +97,7 @@ nav .container {
 
 /* Sections */
 section {
-    padding: 4rem 0;
+    padding: 80px 20px;
 }
 
 #hero {
@@ -248,15 +239,19 @@ section {
 }
 
 .project-link {
-    color: var(--primary-text);
+    border: 1px solid var(--accent);
+    padding: 8px 16px;
+    border-radius: 5px;
+    color: var(--accent);
     font-weight: 600;
     display: inline-block;
     margin-top: 1rem;
+    transition: all 0.3s ease;
 }
 
 .project-link:hover {
-    color: var(--accent);
-    text-decoration: underline;
+    background-color: var(--accent);
+    color: var(--primary-bg);
 }
 
 .contact-link {

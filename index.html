@@ -15,7 +15,6 @@
             <div class="container">
                 <div class="logo">Portfolio</div>
                 <ul class="nav-links">
-                    <li><a href="#hero">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#toolkit">Toolkit</a></li>
@@ -198,7 +197,7 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+                    entry.target.classList.add('visible');
                     observer.unobserve(entry.target); // Only animate once
                 }
             });
