@@ -312,6 +312,84 @@ section {
   text-decoration: none;
 }
 
+img.project-image {
+  width: 100%;
+  height: 180px; /* Or a height that looks good */
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* --- Standardized Services Section --- */
+#services {
+  background-color: #121212;
+  padding: 80px 0;
+  text-align: center;
+}
+
+#services .container > p {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.service-item {
+  background-color: #1E1E1E; /* Match project card background */
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+}
+
+.service-item i { /* Assuming you use Font Awesome icons */
+  font-size: 2.5rem;
+  color: #00a8e8; /* Use accent color */
+  margin-bottom: 15px;
+}
+
+.service-item h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  color: #EAEAEA;
+  margin-bottom: 15px;
+}
+
+.service-item p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #b3b3b3; /* A slightly softer text color */
+}
+
+.service-item ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.service-item ul li {
+  font-family: 'Lato', sans-serif;
+  color: #b3b3b3;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* Adds a small accent-colored tick or bullet */
+.service-item ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #00a8e8;
+}
+
 .contact-link {
     color: var(--primary-text);
     transition: color 0.3s ease;
