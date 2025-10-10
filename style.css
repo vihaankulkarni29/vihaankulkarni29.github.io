@@ -144,10 +144,10 @@ section {
 
 /* --- Hero Section Actions Layout --- */
 .hero-actions {
-  margin-top: 24px;
   display: flex;
-  align-items: center; /* This is the line to add/ensure is present */
+  align-items: baseline; /* Change 'center' to 'baseline' */
   gap: 20px;
+  margin-top: 24px;
 }
 
 .social-links {
