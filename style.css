@@ -146,8 +146,8 @@ section {
 .hero-actions {
   margin-top: 24px;
   display: flex;
-  align-items: center; /* Vertically aligns the button and icons */
-  gap: 20px; /* Creates space between the button and the icons */
+  align-items: center; /* This is the line to add/ensure is present */
+  gap: 20px;
 }
 
 .social-links {
