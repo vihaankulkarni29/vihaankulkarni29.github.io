@@ -215,8 +215,8 @@ section {
     background-color: #0088cc;
 }
 
-#about, #projects, #toolkit, #contact {
-    background-color: var(--primary-bg);
+#about, #projects, #contact {
+    background-color: #121212;
 }
 
 #contact .container {
