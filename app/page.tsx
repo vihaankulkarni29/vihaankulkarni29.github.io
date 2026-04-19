@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Dna, Target, Cpu, Globe, Code, Briefcase } from "lucide-react";
+import StrategyTerminal from "@/components/StrategyTerminal";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -105,7 +106,7 @@ export default function Home() {
       </section>
 
       {/* Proof of Work Section (Bento Grid) */}
-      <section className="relative z-10 w-full max-w-7xl px-6 pb-32">
+      <section className="relative z-10 w-full max-w-7xl px-6 pb-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -147,6 +148,9 @@ export default function Home() {
           ))}
         </motion.div>
       </section>
+
+      {/* Strategy Terminal Section */}
+      <StrategyTerminal />
 
       {/* Footer */}
       <footer className="relative z-10 w-full max-w-7xl px-6 py-12 border-t border-zinc-900/50 mt-auto flex flex-col md:flex-row items-center justify-between gap-6 text-zinc-500 text-sm font-mono">
