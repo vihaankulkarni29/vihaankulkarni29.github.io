@@ -35,17 +35,8 @@ export default function ArchitectureBypass() {
   const [mode, setMode] = useState<"standard" | "vihaan">("vihaan");
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-6 py-24 relative z-10">
+    <div className="w-full max-w-6xl mx-auto px-6 relative z-10">
       <div className="flex flex-col items-center space-y-12">
-        <div className="text-center space-y-4">
-          <h2 className="text-3xl md:text-5xl font-black text-zinc-100 uppercase tracking-tight">
-            Velocity Bypass <span className="text-emerald-500">ROI</span>
-          </h2>
-          <p className="text-zinc-500 font-mono text-sm max-w-2xl mx-auto uppercase tracking-wide">
-             Comparing generic agency workflows against high-throughput automated architectures.
-          </p>
-        </div>
-
         {/* Toggle Switch */}
         <div className="relative p-1 bg-zinc-900 border border-zinc-800 rounded-full flex items-center">
           <button
@@ -138,7 +129,7 @@ export default function ArchitectureBypass() {
                   <p className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">
                     {stat.label}
                   </p>
-                  <p className={`text-xl font-black tracking-tight ${mode === "vihaan" ? "text-emerald-400" : "text-zinc-300"}`}>
+                  <p className={`text-base font-black tracking-tight ${mode === "vihaan" ? "text-emerald-400" : "text-zinc-300"}`}>
                     {stat.value}
                   </p>
                 </div>
@@ -150,6 +141,6 @@ export default function ArchitectureBypass() {
       
       {/* Background Atmosphere */}
       <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-xl max-h-64 rounded-full blur-[140px] pointer-events-none transition-colors duration-1000 ${mode === "vihaan" ? "bg-emerald-500/5" : "bg-zinc-500/5"}`} />
-    </section>
+    </div>
   );
 }
