@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Dna, Target, Cpu, Globe, Code, Briefcase } from "lucide-react";
-import StrategyTerminal from "@/components/StrategyTerminal";
 import WorkDNA from "@/components/WorkDNA";
+import ArchitectureBypass from "@/components/ArchitectureBypass";
+import StrategyTerminal from "@/components/StrategyTerminal";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -149,6 +150,9 @@ export default function Home() {
           ))}
         </motion.div>
       </section>
+
+      {/* Velocity Bypass ROI Section */}
+      <ArchitectureBypass />
 
       {/* Work DNA Skill Tree Section */}
       <WorkDNA />
