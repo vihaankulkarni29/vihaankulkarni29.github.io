@@ -5,6 +5,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Dna, Target, Cpu, Globe, Code, Briefcase } from "lucide-react";
 import StrategyTerminal from "@/components/StrategyTerminal";
+import WorkDNA from "@/components/WorkDNA";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -148,6 +149,9 @@ export default function Home() {
           ))}
         </motion.div>
       </section>
+
+      {/* Work DNA Skill Tree Section */}
+      <WorkDNA />
 
       {/* Strategy Terminal Section */}
       <StrategyTerminal />
