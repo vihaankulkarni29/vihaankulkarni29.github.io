@@ -5,16 +5,20 @@ interface SectionTitleProps {
   subtitle: string;
 }
 
+import { KineticHeader } from "./KineticHeader";
+
 export function SectionTitle({ title, subtitle }: SectionTitleProps) {
   return (
-    <div className="w-full max-w-7xl mx-auto px-6 mb-12 space-y-1">
-      <h2 className="text-3xl md:text-4xl font-black text-zinc-100 uppercase tracking-tighter">
-        {title}
-      </h2>
-      <p className="text-zinc-500 font-mono text-xs md:text-sm uppercase tracking-[0.2em] font-medium">
-        {subtitle}
-      </p>
-    </div>
+    <KineticHeader>
+      <div className="w-full max-w-7xl mx-auto px-6 mb-12 space-y-1">
+        <h2 className="text-3xl md:text-4xl font-black text-zinc-100 uppercase tracking-tighter">
+          {title}
+        </h2>
+        <p className="text-zinc-500 font-mono text-xs md:text-sm uppercase tracking-[0.2em] font-medium">
+          {subtitle}
+        </p>
+      </div>
+    </KineticHeader>
   );
 }
 

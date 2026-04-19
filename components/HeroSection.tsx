@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Send } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function HeroSection() {
   return (
@@ -18,11 +19,8 @@ export default function HeroSection() {
           </span>
         </h1>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-zinc-500 font-mono text-sm md:text-xl md:whitespace-nowrap">
-          <span className="text-emerald-500 font-bold">{">"}</span>
-          <p className="tracking-tight uppercase font-semibold">
-            Executing: <span className="text-zinc-300">High-Throughput Genomics</span> | <span className="text-zinc-300">B2B OSINT</span> | <span className="text-zinc-300">HPC Optimization</span>
-          </p>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-emerald-400 font-mono text-sm md:text-xl md:whitespace-nowrap h-8">
+          <TerminalTyping />
         </div>
 
         <div className="flex flex-col sm:flex-row gap-5 pt-8 items-center justify-center">
@@ -47,5 +45,52 @@ export default function HeroSection() {
       {/* Decorative Atmosphere */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-[600px] bg-cyan-500/5 blur-[160px] rounded-full pointer-events-none -z-1" />
     </section>
+  );
+}
+
+function TerminalTyping() {
+  const sequence = [
+    "> INITIALIZING ENVIRONMENT...",
+    "> LOADING GENOMIC MODELS...",
+    "> BYPASSING API LIMITS...",
+    "> SYSTEM READY.",
+  ];
+  
+  const [index, setIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const fullText = sequence[index];
+      
+      if (!isDeleting) {
+        setDisplayText(fullText.substring(0, displayText.length + 1));
+        if (displayText === fullText) {
+          if (index === sequence.length - 1) return;
+          setTimeout(() => setIsDeleting(true), 1500);
+        }
+      } else {
+        setDisplayText(fullText.substring(0, displayText.length - 1));
+        if (displayText === "") {
+          setIsDeleting(false);
+          setIndex((prev) => (prev + 1) % sequence.length);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, isDeleting ? 30 : 70);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, index]);
+
+  return (
+    <div className="flex items-center gap-2">
+      <span className="min-w-[2ch]">{displayText}</span>
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.8, repeat: Infinity }}
+        className="w-2 h-5 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+      />
+    </div>
   );
 }
