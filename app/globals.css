@@ -12,12 +12,22 @@
 
 body {
   background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  color: #d4d4d8; /* zinc-300 body */
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
 
-@keyframes gradient {
+h1, h2, h3, h4, h5, h6 {
+  color: #fafafa; /* zinc-50 heading */
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+code, .font-mono {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@keyframes animate-gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
@@ -25,5 +35,5 @@ body {
 
 .animate-gradient {
   background-size: 200% auto;
-  animation: gradient 8s linear infinite;
+  animation: animate-gradient 8s ease infinite;
 }
