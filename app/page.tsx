@@ -25,7 +25,7 @@ const cardData = [
     icon: <Target className="w-8 h-8" />,
   },
   {
-    name: "HPC-Optimizer (AutoSIM)",
+    name: "HPC-Optimizer",
     title: "Memory-Safe Biophysics",
     desc: "Refactoring legacy Umbrella Sampling pipelines using chunk-based processing for massive membrane simulations.",
     icon: <Cpu className="w-8 h-8" />,

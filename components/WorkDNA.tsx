@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const skills = [
-  "Structural Biocomputation (AutoSIM)",
+  "Structural Biocomputation",
   "Genomic Pipeline Automation (MutationScan)",
   "HPC Memory Optimization",
   "Predictive Modeling (HMMs & NNs)",
