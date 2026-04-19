@@ -37,3 +37,10 @@ code, .font-mono {
   background-size: 200% auto;
   animation: animate-gradient 8s ease infinite;
 }
+
+/* Lenis Boilerplate */
+html.lenis, html.lenis body { height: auto; width: 100vw; overflow-x: hidden; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
