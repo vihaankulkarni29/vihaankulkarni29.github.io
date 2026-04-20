@@ -19,11 +19,15 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center space-y-8"
+        className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center text-center space-y-8"
       >
-        <div className="space-y-6">
-          <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter leading-[0.85] text-zinc-50 uppercase font-sans text-center">
-            Architecting<br />Systems.
+        <div className="space-y-6 w-full">
+          <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter leading-[0.85] text-zinc-50 uppercase font-sans text-center px-4">
+            Architecting<br />
+            <span className="relative">
+              Systems
+              <span className="absolute -right-[0.2em] md:-right-[0.15em] bottom-0 text-zinc-500">.</span>
+            </span>
           </h1>
           <p className="text-zinc-400 text-lg md:text-xl font-light tracking-wide max-w-3xl mx-auto text-center leading-relaxed">
             From predictive biocomputation models to high-throughput commercial architectures. Engineered for <span className="text-zinc-100 italic">maximum velocity</span>, absolute precision, and optimal capital efficiency.
