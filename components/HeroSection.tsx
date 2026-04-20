@@ -3,10 +3,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Send } from "lucide-react";
 import { useState, useEffect } from "react";
+import Hero3D from "./Hero3D";
 
 export default function HeroSection() {
   return (
-    <section className="relative z-10 min-h-[85vh] w-full flex flex-col items-center justify-center p-6 text-center">
+    <section className="relative min-h-[85vh] w-full flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+      <Hero3D />
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
