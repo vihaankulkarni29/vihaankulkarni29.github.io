@@ -22,7 +22,7 @@ export default function HeroSection() {
         className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center text-center space-y-8"
       >
         <div className="space-y-6 w-full">
-          <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter leading-[0.85] text-zinc-50 uppercase font-sans text-center px-4">
+          <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-[0.85] text-zinc-50 uppercase font-sans text-center px-4">
             Architecting<br />
             <span className="relative">
               Systems

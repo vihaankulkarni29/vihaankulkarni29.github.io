@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, ChevronRight } from "lucide-react";
+import { Send, CheckCircle2, ChevronRight, Loader2 } from "lucide-react";
 
 export default function StrategyTerminal() {
   const [input, setInput] = useState("");
-  const [status, setStatus] = useState<"idle" | "analyzing" | "captured">("idle");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "analyzing" | "captured" | "submitting" | "confirmed">("idle");
   const [loadingStep, setLoadingStep] = useState(0);
 
   const steps = [
@@ -20,6 +21,29 @@ export default function StrategyTerminal() {
     if (!input.trim()) return;
     setStatus("analyzing");
     setLoadingStep(0);
+  };
+
+  const handleSubmit = async () => {
+    if (!email.trim() || !email.includes('@')) return;
+    setStatus("submitting");
+    
+    try {
+      const response = await fetch('/api/strategy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, bottleneck: input }),
+      });
+
+      if (response.ok) {
+        setStatus("confirmed");
+      } else {
+        throw new Error('Push failed');
+      }
+    } catch (error) {
+      console.error(error);
+      alert("System push failed. Please retry.");
+      setStatus("captured");
+    }
   };
 
   useEffect(() => {
@@ -115,34 +139,46 @@ export default function StrategyTerminal() {
               </motion.div>
             )}
 
-            {status === "captured" && (
+            {(status === "captured" || status === "submitting" || status === "confirmed") && (
               <motion.div
                 key="captured"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="flex-1 flex flex-col items-center justify-center text-center space-y-8"
               >
-                <div className="p-5 bg-emerald-500/10 rounded-full text-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+                <div className={`p-5 rounded-full transition-all duration-500 ${status === "confirmed" ? "bg-emerald-500 text-zinc-950 scale-110" : "bg-emerald-500/10 text-emerald-400"}`}>
                   <CheckCircle2 size={56} />
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-2xl text-zinc-100 font-black uppercase tracking-[0.2em]">
-                    Architecture Compiled
+                    {status === "confirmed" ? "Access Granted" : "Architecture Compiled"}
                   </h3>
                   <p className="text-zinc-500 max-w-md mx-auto leading-relaxed">
-                    Strategy and implementation playbook has been generated. Enter your work email to receive the direct access link.
+                    {status === "confirmed" 
+                      ? "The implementation playbook has been sent to your inbox. Check your secure communication channel." 
+                      : "Strategy and implementation playbook has been generated. Enter your work email to receive the direct access link."}
                   </p>
                 </div>
-                <div className="flex flex-col sm:flex-row w-full max-w-md gap-3 pt-4">
-                  <input
-                    type="email"
-                    placeholder="name@company.com"
-                    className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-md px-5 py-4 focus:outline-none focus:border-emerald-500/50 text-zinc-100 transition-all font-mono placeholder:text-zinc-700"
-                  />
-                  <button className="px-8 py-4 bg-zinc-50 text-zinc-950 font-black rounded-md hover:bg-white transition-all uppercase tracking-widest text-xs">
-                    Access
-                  </button>
-                </div>
+                
+                {status !== "confirmed" && (
+                  <div className="flex flex-col sm:flex-row w-full max-w-md gap-3 pt-4">
+                    <input
+                      type="email"
+                      placeholder="name@company.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={status === "submitting"}
+                      className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-md px-5 py-4 focus:outline-none focus:border-emerald-500/50 text-zinc-100 transition-all font-mono placeholder:text-zinc-700 disabled:opacity-50"
+                    />
+                    <button 
+                      onClick={handleSubmit}
+                      disabled={status === "submitting"}
+                      className="px-8 py-4 bg-zinc-50 text-zinc-950 font-black rounded-md hover:bg-white transition-all uppercase tracking-widest text-xs flex items-center justify-center min-w-[120px]"
+                    >
+                      {status === "submitting" ? <Loader2 className="animate-spin" size={18} /> : "Access"}
+                    </button>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>

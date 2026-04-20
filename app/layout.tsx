@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,8 +15,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vihaan Kulkarni | Systems Architecture & Biocomputation",
-  description: "Architecting high-throughput biological systems and autonomous B2B intelligence engines.",
+  title: "Vihaan Inc. | Elite Systems Architecture",
+  description: "From predictive biocomputation models to high-throughput commercial architectures. Engineered for maximum velocity and absolute precision.",
+  openGraph: {
+    title: "Vihaan Inc. | Elite Systems Architecture",
+    description: "Architecting high-throughput biological and commercial systems.",
+    url: "https://vihaankulkarni29.github.io",
+    siteName: "Vihaan Inc.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vihaan Inc. | Elite Systems Architecture",
+    description: "Architecting high-throughput biological and commercial systems.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -29,6 +51,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col relative bg-black">
+        <Analytics />
         {/* Layer 1: SVG Grid */}
         <div 
           className="fixed inset-0 z-0 pointer-events-none opacity-[0.03]" 
