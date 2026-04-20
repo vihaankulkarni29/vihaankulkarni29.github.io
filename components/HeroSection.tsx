@@ -1,8 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { Send } from "lucide-react";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
 import Hero3D from "./Hero3D";
 
 export default function HeroSection() {
@@ -50,33 +49,33 @@ export default function HeroSection() {
   );
 }
 
+const TERMINAL_SEQUENCE = [
+  "> INITIALIZING ENVIRONMENT...",
+  "> LOADING GENOMIC MODELS...",
+  "> BYPASSING API LIMITS...",
+  "> SYSTEM READY.",
+];
+
 function TerminalTyping() {
-  const sequence = [
-    "> INITIALIZING ENVIRONMENT...",
-    "> LOADING GENOMIC MODELS...",
-    "> BYPASSING API LIMITS...",
-    "> SYSTEM READY.",
-  ];
-  
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const handleTyping = () => {
-      const fullText = sequence[index];
+      const fullText = TERMINAL_SEQUENCE[index];
       
       if (!isDeleting) {
         setDisplayText(fullText.substring(0, displayText.length + 1));
         if (displayText === fullText) {
-          if (index === sequence.length - 1) return;
+          if (index === TERMINAL_SEQUENCE.length - 1) return;
           setTimeout(() => setIsDeleting(true), 1500);
         }
       } else {
         setDisplayText(fullText.substring(0, displayText.length - 1));
         if (displayText === "") {
           setIsDeleting(false);
-          setIndex((prev) => (prev + 1) % sequence.length);
+          setIndex((prev) => (prev + 1) % TERMINAL_SEQUENCE.length);
         }
       }
     };

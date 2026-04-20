@@ -53,7 +53,7 @@ function ParticleCloud() {
 export default function Hero3D() {
   return (
     <div className="absolute inset-0 z-0 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 8], fov: 60 }} transparent>
+      <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
         <ambientLight intensity={0.5} />
         <ParticleCloud />
       </Canvas>
