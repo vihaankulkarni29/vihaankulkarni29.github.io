@@ -6,29 +6,34 @@ import Hero3D from "./Hero3D";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[85vh] w-full flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+    <section className="relative min-h-[90vh] w-full flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-zinc-950">
       <Hero3D />
+      
+      {/* 1. Terminal Statis (Top Center) */}
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 z-20 h-6 flex items-center justify-center text-[10px] md:text-xs text-emerald-500 font-mono tracking-[0.3em] uppercase opacity-70">
+        <TerminalTyping />
+      </div>
+
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-5xl space-y-12"
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 max-w-7xl space-y-6"
       >
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05]">
-          <span className="bg-gradient-to-r from-emerald-400 via-cyan-500 to-emerald-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-            Architecting Systems at the Intersection of Biology and Business.
-          </span>
-        </h1>
-
-        <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-emerald-400 font-mono text-sm md:text-xl md:whitespace-nowrap h-8">
-          <TerminalTyping />
+        <div className="space-y-4">
+          <h1 className="text-6xl md:text-[10rem] lg:text-[12rem] font-black tracking-tighter leading-[0.85] text-zinc-50 uppercase font-sans">
+            Architecting<br />Systems.
+          </h1>
+          <p className="text-zinc-400 text-lg md:text-3xl font-light tracking-wide max-w-4xl mx-auto">
+            At the intersection of <span className="text-zinc-100 font-medium">Biocomputation</span> and <span className="text-zinc-100 font-medium">Business Intelligence</span>.
+          </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-5 pt-8 items-center justify-center">
+        <div className="flex flex-col sm:flex-row gap-5 pt-12 items-center justify-center">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-5 bg-zinc-50 text-zinc-950 font-bold rounded-md hover:bg-white transition-all border-2 border-transparent hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] text-lg uppercase tracking-widest"
+            className="px-12 py-5 bg-zinc-50 text-zinc-950 font-bold rounded-full hover:bg-white transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] text-xs md:text-sm uppercase tracking-widest"
           >
             Initialize System Build
           </motion.button>
@@ -36,7 +41,7 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.03)" }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-5 border border-zinc-800 text-zinc-500 rounded-md hover:text-zinc-300 transition-all font-semibold text-lg uppercase tracking-widest"
+            className="px-12 py-5 border border-zinc-800 text-zinc-400 rounded-full hover:text-zinc-200 transition-all font-semibold text-xs md:text-sm uppercase tracking-widest backdrop-blur-sm"
           >
             View Architecture Logs
           </motion.button>
@@ -44,7 +49,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Decorative Atmosphere */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-[600px] bg-cyan-500/5 blur-[160px] rounded-full pointer-events-none -z-1" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl max-h-[800px] bg-emerald-900/[0.03] blur-[160px] rounded-full pointer-events-none -z-1" />
     </section>
   );
 }
