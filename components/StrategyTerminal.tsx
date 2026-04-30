@@ -27,23 +27,10 @@ export default function StrategyTerminal() {
     if (!email.trim() || !email.includes('@')) return;
     setStatus("submitting");
     
-    try {
-      const response = await fetch('/api/strategy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, bottleneck: input }),
-      });
-
-      if (response.ok) {
-        setStatus("confirmed");
-      } else {
-        throw new Error('Push failed');
-      }
-    } catch (error) {
-      console.error(error);
-      alert("System push failed. Please retry.");
-      setStatus("captured");
-    }
+    // Simulate network request for static GitHub Pages site
+    setTimeout(() => {
+      setStatus("confirmed");
+    }, 1500);
   };
 
   useEffect(() => {
