@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import Hero3D from "./Hero3D";
 import Magnetic from "./Magnetic";
+import { site } from "@/data/site";
 
 export default function HeroSection() {
   return (
@@ -36,7 +37,7 @@ export default function HeroSection() {
 
         <div className="flex flex-col items-center pt-16">
           <p className="text-zinc-500 text-[10px] md:text-xs font-mono tracking-[0.4em] uppercase mb-6 opacity-80">
-            The architecture is ready. All you have to do is set up a call.
+            {site.availability}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">

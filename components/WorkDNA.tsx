@@ -2,39 +2,28 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const skills = [
-  "Structural Biocomputation",
-  "Genomic Pipeline Automation (MutationScan)",
-  "HPC Memory Optimization",
-  "Predictive Modeling (HMMs & NNs)",
-  "Quantitative Market Analysis",
-  "Parallel OSINT Extraction",
-  "B2B Pipeline Architecture",
-  "Systems Integration",
-  "Automated Web Harvesting",
-  "Interactive UI/UX Engineering",
-];
+import { skills } from "@/data/skills";
+import type { SkillNode } from "@/types";
 
 interface NodeData {
-  id: number;
+  id: string;
   y: number;
 }
 
 export default function WorkDNA() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
-  // Constants for the helix
-  const nodesCount = 10;
+  // The helix geometry is derived from the content length.
+  const nodesCount = skills.length;
   const height = 600;
   const width = 200;
   const amplitude = 60;
 
   // Pre-calculate node positions along the sine wave
   const nodes = useMemo(() => {
-    return Array.from({ length: nodesCount }).map((_, i) => {
+    return skills.map((skill: SkillNode, i) => {
       const y = (height / (nodesCount + 1)) * (i + 1);
-      return { y, id: i };
+      return { y, id: skill.id };
     });
   }, [nodesCount, height]);
 
@@ -103,7 +92,7 @@ export default function WorkDNA() {
                   STRAND_DECODED [HEX_{hoveredIdx.toString(16).toUpperCase()}]
                 </p>
                 <p className="text-zinc-100 font-bold text-sm tracking-tight leading-snug">
-                  {skills[hoveredIdx]}
+                  {skills[hoveredIdx].label}
                 </p>
               </div>
             </motion.div>

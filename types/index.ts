@@ -7,32 +7,25 @@
  * can be refactored without touching content.
  */
 
-/**
- * Key for a card glyph. Components map these to real icon components,
- * because a React component cannot be serialised into a data file.
- */
-export type IconKey = "target" | "dna" | "cpu" | "sigma";
-
-/** Grid footprint for a project card. Mapped to Tailwind classes by the component. */
-export type SpanSize = "wide" | "narrow";
-
 export interface ProjectImage {
   /** Path under /public, e.g. "/assets/images/wildtype_aligner.png" */
   src: string;
   alt: string;
+  /** Intrinsic pixel dimensions. next/image needs these to reserve layout space. */
+  width: number;
+  height: number;
 }
 
 export interface Project {
   id: string;
-  /** Short monospace label shown above the title, e.g. "Bio-Automator (MutationScan)". */
-  name: string;
   title: string;
+  role: string;
+  techStack: string[];
   description: string;
-  icon: IconKey;
-  span: SpanSize;
+  githubLink: string;
+  /** Featured cards get visual emphasis. Does not affect grid span. */
+  featured: boolean;
   image?: ProjectImage;
-  /** Repository or live URL, if the project is public. */
-  link?: string;
 }
 
 export interface Stat {
@@ -71,8 +64,6 @@ export interface BypassComparison {
 
 export interface SiteConfig {
   name: string;
-  title: string;
-  description: string;
   location: string;
   availability: string;
   links: {

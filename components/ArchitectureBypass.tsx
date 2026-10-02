@@ -3,36 +3,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Zap, TrendingUp, Euro } from "lucide-react";
+import { bypassComparison } from "@/data/bypass";
+import type { BypassMode, MetricIconKey } from "@/types";
 
-const standardSteps = [
-  "Data Broker Subscriptions",
-  "Manual SDR Searching",
-  "Human Verification",
-  "Spreadsheet Formatting",
-  "Outreach"
-];
-
-const vihaanSteps = [
-  "Parallel OSINT Extraction",
-  "Automated SMTP Engine",
-  "Next.js CRM Injection"
-];
-
-const metrics = {
-  standard: [
-    { label: "Time to Delivery", value: "3 Weeks", icon: <Zap size={18} /> },
-    { label: "Infrastructure Cost", value: "€10,000/yr", icon: <Euro size={18} /> },
-    { label: "Lead Accuracy", value: "70%", icon: <TrendingUp size={18} /> },
-  ],
-  vihaan: [
-    { label: "Time to Delivery", value: "24 Hours", icon: <Zap size={18} /> },
-    { label: "Infrastructure Cost", value: "€0 (Custom Stack)", icon: <Euro size={18} /> },
-    { label: "Lead Accuracy", value: "100% (Zero-Bounce)", icon: <TrendingUp size={18} /> },
-  ]
+const metricIconMap: Record<MetricIconKey, React.ReactNode> = {
+  zap: <Zap size={18} />,
+  euro: <Euro size={18} />,
+  trending: <TrendingUp size={18} />,
 };
 
 export default function ArchitectureBypass() {
-  const [mode, setMode] = useState<"standard" | "vihaan">("vihaan");
+  const [mode, setMode] = useState<BypassMode>("vihaan");
+
+  const standardSteps = bypassComparison.standard;
+  const vihaanSteps = bypassComparison.vihaan;
+  const metrics = bypassComparison.metrics;
 
   return (
     <div className="w-full max-w-6xl mx-auto px-6 relative z-10">
@@ -81,7 +66,7 @@ export default function ArchitectureBypass() {
                 {standardSteps.map((step, i) => (
                   <div key={i} className="flex items-center gap-4">
                     <div className="px-5 py-3 border border-dotted border-zinc-700 rounded-lg text-zinc-500 text-xs font-mono uppercase tracking-tight">
-                      {step}
+                      {step.label}
                     </div>
                     {i < standardSteps.length - 1 && <ArrowRight size={14} className="text-zinc-800" />}
                   </div>
@@ -101,7 +86,7 @@ export default function ArchitectureBypass() {
                       whileHover={{ scale: 1.05 }}
                       className="px-6 py-4 bg-emerald-500/10 border border-emerald-500/50 rounded-xl text-emerald-400 text-sm font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.1)]"
                     >
-                      {step}
+                      {step.label}
                     </motion.div>
                     {i < vihaanSteps.length - 1 && <ArrowRight size={16} className="text-emerald-500/50 animate-pulse" />}
                   </div>
@@ -123,7 +108,7 @@ export default function ArchitectureBypass() {
             >
               <div className="flex items-center gap-4">
                 <div className={`p-2 rounded-lg ${mode === "vihaan" ? "bg-emerald-500/10 text-emerald-400" : "bg-zinc-800 text-zinc-500"}`}>
-                  {stat.icon}
+                  {metricIconMap[stat.icon]}
                 </div>
                 <div>
                   <p className="text-zinc-500 text-[10px] uppercase tracking-widest font-mono">

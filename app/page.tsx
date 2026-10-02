@@ -7,6 +7,7 @@ import BentoGrid from "@/components/BentoGrid";
 import ArchitectureBypass from "@/components/ArchitectureBypass";
 import WorkDNA from "@/components/WorkDNA";
 import StrategyTerminal from "@/components/StrategyTerminal";
+import { site } from "@/data/site";
 import { Code, Briefcase, Globe } from "lucide-react";
 
 export default function Home() {
@@ -70,18 +71,18 @@ export default function Home() {
       <footer className="relative z-10 w-full max-w-7xl px-6 py-16 border-t border-zinc-900 mt-auto flex flex-col md:flex-row items-center justify-between gap-8 text-zinc-600 text-sm font-mono">
         <div className="flex items-center gap-3">
           <span className="uppercase tracking-widest text-[10px] bg-zinc-900 px-2 py-1 rounded">VHN_ENGINEERING</span>
-          <span className="text-zinc-400 font-bold">Vihaan Kulkarni</span>
+          <span className="text-zinc-400 font-bold">{site.name}</span>
           <span className="text-zinc-800">|</span>
           <div className="flex items-center gap-1.5">
-            Mumbai <Globe className="w-3.5 h-3.5 text-emerald-600" /> Global
+            {site.location} <Globe className="w-3.5 h-3.5 text-emerald-600" /> Global
           </div>
         </div>
         
         <div className="flex items-center gap-10">
-          <a href="https://github.com/vihaankulkarni29" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
+          <a href={site.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
             <Code className="w-5 h-5" />
           </a>
-          <a href="https://linkedin.com/in/vihaankulkarni" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
+          <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
             <Briefcase className="w-5 h-5" />
           </a>
         </div>
