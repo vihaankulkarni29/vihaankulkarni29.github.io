@@ -30,8 +30,8 @@ export default function Home() {
       <StatsMarquee />
 
       {/* 3. Proof of Work */}
-      <SectionWrapper>
-        <SectionTitle 
+      <SectionWrapper id={site.contact.logsAnchor}>
+        <SectionTitle
           title="Proof of Work" 
           subtitle="Complex architectures deployed in the wild." 
         />
@@ -77,10 +77,10 @@ export default function Home() {
         </div>
         
         <div className="flex items-center gap-10">
-          <a href={site.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
+          <a href={site.links.github} target="_blank" rel="noopener noreferrer" aria-label={`${site.name} on GitHub`} className="hover:text-zinc-200 transition-colors">
             <Code className="w-5 h-5" />
           </a>
-          <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
+          <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${site.name} on LinkedIn`} className="hover:text-zinc-200 transition-colors">
             <Briefcase className="w-5 h-5" />
           </a>
         </div>

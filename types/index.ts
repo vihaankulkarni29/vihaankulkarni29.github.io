@@ -56,6 +56,14 @@ export interface SiteConfig {
   name: string;
   location: string;
   availability: string;
+  contact: {
+    /** Booking link for the primary hero CTA. Empty renders the button disabled. */
+    schedulingUrl: string;
+    /** Contact address, used as the mailto: fallback. */
+    email: string;
+    /** Anchor id for the secondary hero CTA. */
+    logsAnchor: string;
+  };
   links: {
     github: string;
     linkedin: string;

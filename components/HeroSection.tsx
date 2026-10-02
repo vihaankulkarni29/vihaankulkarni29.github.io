@@ -32,6 +32,20 @@ function HeroCanvas() {
 }
 
 export default function HeroSection() {
+  // Until site.contact.schedulingUrl is filled in the primary CTA has nowhere
+  // to go, so it renders visibly disabled instead of a button that swallows
+  // the click. Falls back to mailto: if only an address is configured.
+  const { schedulingUrl, email } = site.contact;
+  const primaryCta = schedulingUrl
+    ? { href: schedulingUrl, external: true, disabled: false }
+    : email
+      ? {
+          href: `mailto:${email}?subject=Architecture%20Review`,
+          external: false,
+          disabled: false,
+        }
+      : { href: "#", external: false, disabled: true };
+
   return (
     <section className="relative min-h-[95vh] w-full flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-zinc-950">
 <HeroCanvas />
@@ -67,23 +81,33 @@ export default function HeroSection() {
           
           <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
             <Magnetic strength={0.3}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-14 py-6 bg-zinc-50 text-zinc-950 font-bold rounded-full hover:bg-white transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] text-xs md:text-sm uppercase tracking-widest"
+              <motion.a
+                href={primaryCta.href}
+                target={primaryCta.external ? "_blank" : undefined}
+                rel={primaryCta.external ? "noopener noreferrer" : undefined}
+                aria-disabled={primaryCta.disabled || undefined}
+                onClick={primaryCta.disabled ? (e) => e.preventDefault() : undefined}
+                whileHover={primaryCta.disabled ? undefined : { scale: 1.05 }}
+                whileTap={primaryCta.disabled ? undefined : { scale: 0.95 }}
+                className={`px-14 py-6 bg-zinc-50 text-zinc-950 font-bold rounded-full transition-all text-xs md:text-sm uppercase tracking-widest ${
+                  primaryCta.disabled
+                    ? "opacity-40 cursor-not-allowed shadow-none"
+                    : "hover:bg-white shadow-[0_0_50px_rgba(255,255,255,0.15)]"
+                }`}
               >
                 Schedule Architecture Review
-              </motion.button>
+              </motion.a>
             </Magnetic>
-            
+
             <Magnetic strength={0.3}>
-              <motion.button
+              <motion.a
+                href={`#${site.contact.logsAnchor}`}
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.05)" }}
                 whileTap={{ scale: 0.95 }}
                 className="px-14 py-6 border border-zinc-800 text-zinc-400 rounded-full hover:text-zinc-200 transition-all font-semibold text-xs md:text-sm uppercase tracking-widest backdrop-blur-sm"
               >
                 View Architecture Logs
-              </motion.button>
+              </motion.a>
             </Magnetic>
           </div>
         </div>
