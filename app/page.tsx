@@ -1,5 +1,3 @@
-"use client";
-
 import { SectionTitle, SectionWrapper } from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import StatsMarquee from "@/components/StatsMarquee";

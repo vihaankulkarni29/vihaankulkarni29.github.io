@@ -1,15 +1,40 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
-import Hero3D from "./Hero3D";
 import Magnetic from "./Magnetic";
 import { site } from "@/data/site";
+
+/**
+ * three.js / @react-three/fiber / @react-three/drei together are ~1 MB of
+ * chunk. Loading them on the critical path blocks the headline from
+ * painting, so the canvas is split out and only requested after mount.
+ *
+ * ssr: false keeps WebGL out of the server render entirely; the mounted
+ * gate keeps it out of the initial client chunk too, so it cannot delay
+ * hydration. The placeholder preserves the hero's layout box either way.
+ */
+const Hero3D = dynamic(() => import("./Hero3D"), { ssr: false });
+
+function HeroCanvas() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true" />;
+  }
+
+  return <Hero3D />;
+}
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-[95vh] w-full flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-zinc-950">
-      <Hero3D />
+<HeroCanvas />
       
       {/* 1. Terminal Status (Top Center) */}
       <div className="absolute top-12 left-1/2 -translate-x-1/2 z-20 h-6 flex items-center justify-center text-[10px] md:text-xs text-emerald-500 font-mono tracking-[0.3em] uppercase opacity-60">

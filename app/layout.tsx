@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import SmoothScroll from "@/components/SmoothScroll";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
@@ -73,9 +73,9 @@ export default function RootLayout({
         <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none -z-1 opacity-50" />
 
         <div className="relative z-10 flex flex-col min-h-full">
-          <SmoothScroll>
+          <SmoothScrollProvider>
             {children}
-          </SmoothScroll>
+          </SmoothScrollProvider>
         </div>
       </body>
     </html>
