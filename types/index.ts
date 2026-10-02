@@ -7,15 +7,6 @@
  * can be refactored without touching content.
  */
 
-export interface ProjectImage {
-  /** Path under /public, e.g. "/assets/images/wildtype_aligner.png" */
-  src: string;
-  alt: string;
-  /** Intrinsic pixel dimensions. next/image needs these to reserve layout space. */
-  width: number;
-  height: number;
-}
-
 export interface Project {
   id: string;
   title: string;
@@ -25,7 +16,6 @@ export interface Project {
   githubLink: string;
   /** Featured cards get visual emphasis. Does not affect grid span. */
   featured: boolean;
-  image?: ProjectImage;
 }
 
 export interface Stat {

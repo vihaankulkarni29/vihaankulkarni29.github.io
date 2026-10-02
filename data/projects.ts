@@ -7,8 +7,9 @@ import type { Project } from "@/types";
  * are laid out on an equal-width grid, so adding a project never leaves a
  * gap in the row.
  *
- * `image` is optional and only set where a screenshot genuinely belongs to
- * that project. Cards without one render text-only, so the row stays even.
+ * Cards are text-only for now. `Project` has no image field; when
+ * screenshots are ready, add one back to the type and render it with
+ * next/image using explicit width/height.
  */
 export const projects: Project[] = [
   {
@@ -30,12 +31,6 @@ export const projects: Project[] = [
       "A modular toolkit encompassing PyMol-Automator, SubScan, and WildTypeAligner. Designed to eliminate manual bottlenecks in amino acid sequence alignment and biophysical structure visualization.",
     githubLink: "https://github.com/vihaankulkarni29",
     featured: true,
-    image: {
-      src: "/assets/images/wildtype_aligner.png",
-      alt: "WildTypeAligner sequence alignment output within the Structural Bioinformatics Automation Suite",
-      width: 1235,
-      height: 761,
-    },
   },
   {
     id: "rescue-sync",

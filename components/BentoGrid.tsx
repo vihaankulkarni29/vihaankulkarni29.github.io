@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -53,19 +52,6 @@ function BentoCard({ card }: { card: Project }) {
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
-
-          {card.image && (
-            <div className="relative w-full overflow-hidden rounded-lg border border-white/5 bg-zinc-950">
-              <Image
-                src={card.image.src}
-                alt={card.image.alt}
-                width={card.image.width}
-                height={card.image.height}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="w-full h-auto opacity-80 transition-opacity duration-500 group-hover:opacity-100"
-              />
-            </div>
-          )}
 
           <div className="space-y-2">
             <h3 className="text-2xl font-bold text-zinc-100 group-hover:text-white">
