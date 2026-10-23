@@ -61,13 +61,17 @@ export default function HeroSection() {
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
         className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center text-center space-y-8"
       >
-        <div className="space-y-6 w-full">
-          <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-[0.85] text-zinc-50 uppercase font-sans text-center px-4">
-            Architecting<br />
-            <span className="relative">
-              Systems
-              <span className="absolute -right-[0.2em] md:-right-[0.15em] bottom-0 text-zinc-500">.</span>
+        <div className="space-y-6 w-full text-center">
+          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-gray-300 backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
+            <span>Bridging Computational Biology & Software Engineering</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-zinc-50 font-sans text-center px-4 leading-tight">
+            Building algorithms that <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">decode biology</span> <br className="hidden md:block" />
+            and systems that <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">scale.</span>
           </h1>
           <p className="text-zinc-400 text-lg md:text-xl font-light tracking-wide max-w-3xl mx-auto text-center leading-relaxed">
             From predictive biocomputation models to high-throughput commercial architectures. Engineered for <span className="text-zinc-100 italic">maximum velocity</span>, absolute precision, and optimal capital efficiency.
