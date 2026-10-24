@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://vihaankulkarni29.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://vihaankulkarni29.github.io"
   ),
   title: "Vihaan Inc. | Elite Systems Architecture",
   description: "From predictive biocomputation models to high-throughput commercial architectures. Engineered for maximum velocity and absolute precision.",
