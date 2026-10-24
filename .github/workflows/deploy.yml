@@ -3,19 +3,20 @@ name: Build and Deploy
 on:
   push:
     branches: [master]
-  workflow_dispatch:
+  pull_request:
+    branches: [master]
 
+# Least-privilege: read-only by default; the deploy job requests write only
+# for Pages. Concurrency cancels in-flight runs on the same branch.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,23 +27,37 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies
+      - name: Install dependencies (locked)
         run: npm ci
+
+      - name: Lint
+        run: npm run lint
 
       - name: Build (static export)
         run: npm run build
 
+      # Supply-chain scan: only meaningful on PRs (needs the base ref).
+      - name: Dependency review
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@v4
+
       - name: Upload artifact
+        if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
           path: out
 
   deploy:
-    needs: build
+    needs: build-and-test
     runs-on: ubuntu-latest
+    # Deploy only on push to master, never on PRs.
+    if: github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
