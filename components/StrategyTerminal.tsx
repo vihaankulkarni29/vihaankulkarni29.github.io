@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, ChevronRight, Loader2 } from "lucide-react";
+import { site } from "@/data/site";
 
 export default function StrategyTerminal() {
   const [input, setInput] = useState("");
@@ -23,14 +24,22 @@ export default function StrategyTerminal() {
     setLoadingStep(0);
   };
 
-  const handleSubmit = async () => {
-    if (!email.trim() || !email.includes('@')) return;
-    setStatus("submitting");
-    
-    // Simulate network request for static GitHub Pages site
-    setTimeout(() => {
-      setStatus("confirmed");
-    }, 1500);
+const handleSubmit = () => {
+    if (!email.trim() || !email.includes("@")) return;
+
+    // Static GitHub Pages site has no backend, so the only stable delivery
+    // path is a prefilled mailto: to the contact address. It carries the
+    // visitor's email and the bottleneck they described, so the lead is
+    // complete without any server or third-party form service.
+    const subject = encodeURIComponent("Strategy Terminal Lead");
+    const body = encodeURIComponent(
+      `Bottleneck:\n${input.trim()}\n\nVisitor email:\n${email.trim()}`
+    );
+    window.open(
+      `mailto:${site.contact.email}?subject=${subject}&body=${body}`,
+      "_self"
+    );
+    setStatus("confirmed");
   };
 
   useEffect(() => {
