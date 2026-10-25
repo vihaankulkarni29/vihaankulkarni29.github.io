@@ -36,6 +36,18 @@ jobs:
       - name: Build (static export)
         run: npm run build
 
+      # Fail the job if the export is NOT the custom app. This is the gate
+      # that catches the exact regression the live site served: a default
+      # create-next-app README rendered as HTML instead of the portfolio.
+      - name: Verify export is the custom app
+        run: |
+          test -f out/index.html
+          grep -q "Vihaan Inc." out/index.html
+          ! grep -q "create-next-app" out/index.html
+          ! grep -q "Getting Started" out/index.html
+          ! grep -q "Deploy on Vercel" out/index.html
+          echo "export verified: custom app, no default boilerplate"
+
       # Supply-chain scan: only meaningful on PRs (needs the base ref).
       - name: Dependency review
         if: github.event_name == 'pull_request'
