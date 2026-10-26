@@ -26,6 +26,8 @@ export default function ArchitectureBypass() {
         <div className="relative p-1 bg-zinc-900 border border-zinc-800 rounded-full flex items-center">
           <button
             onClick={() => setMode("standard")}
+            aria-label="Standard Market Agency pipeline"
+            aria-pressed={mode === "standard"}
             className={`relative px-6 py-2 text-xs font-bold uppercase tracking-widest transition-colors z-10 ${mode === "standard" ? "text-zinc-950" : "text-zinc-500 hover:text-zinc-300"}`}
           >
             Standard Market Agency
@@ -39,6 +41,8 @@ export default function ArchitectureBypass() {
           </button>
           <button
             onClick={() => setMode("vihaan")}
+            aria-label="Vihaan Architecture pipeline"
+            aria-pressed={mode === "vihaan"}
             className={`relative px-6 py-2 text-xs font-bold uppercase tracking-widest transition-colors z-10 ${mode === "vihaan" ? "text-zinc-950" : "text-zinc-500 hover:text-zinc-300"}`}
           >
             Vihaan Architecture

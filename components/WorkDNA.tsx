@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { skills } from "@/data/skills";
 import type { SkillNode } from "@/types";
+import { usePrefersReducedMotion } from "@/lib/motion";
 
 interface NodeData {
   id: string;
@@ -145,6 +146,9 @@ interface RenderNodeProps {
 }
 
 function RenderNode({ node, idx, amplitude, offset, color, width, setHoveredIdx, isHovered }: RenderNodeProps) {
+  // Stop the helix oscillation for users who request reduced motion.
+  const reduced = usePrefersReducedMotion();
+
   return (
     <motion.circle
       cx={width / 2}
@@ -155,20 +159,20 @@ function RenderNode({ node, idx, amplitude, offset, color, width, setHoveredIdx,
       onMouseEnter={() => setHoveredIdx(idx)}
       onMouseLeave={() => setHoveredIdx(null)}
       animate={{
-        x: isHovered ? (offset === 0 ? amplitude : -amplitude) : [amplitude, -amplitude, amplitude],
-        opacity: [0.8, 1, 0.8],
+        x: reduced ? 0 : (isHovered ? (offset === 0 ? amplitude : -amplitude) : [amplitude, -amplitude, amplitude]),
+        opacity: reduced ? 1 : [0.8, 1, 0.8],
         scale: isHovered ? 1.5 : 1,
       }}
       transition={{
         x: {
-          duration: isHovered ? 0 : 3,
-          repeat: isHovered ? Infinity : Infinity, // Changed repeat to handle the cycle better
+          duration: reduced ? 0 : (isHovered ? 0 : 3),
+          repeat: reduced ? 0 : Infinity,
           ease: "easeInOut",
-          delay: idx * 0.2 + (offset === 0 ? 0 : 1.5),
+          delay: reduced ? 0 : (idx * 0.2 + (offset === 0 ? 0 : 1.5)),
         },
         opacity: {
-          duration: 2,
-          repeat: Infinity,
+          duration: reduced ? 0 : 2,
+          repeat: reduced ? 0 : Infinity,
         }
       }}
       style={{

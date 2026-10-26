@@ -10,7 +10,7 @@ import { Code, Briefcase, Globe } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-zinc-950 flex flex-col items-center overflow-hidden">
+    <main id="main-content" className="relative min-h-screen bg-zinc-950 flex flex-col items-center overflow-hidden">
       {/* Global Atmosphere (Subtle) */}
       <div 
         className="fixed inset-0 z-0 opacity-[0.15] pointer-events-none" 

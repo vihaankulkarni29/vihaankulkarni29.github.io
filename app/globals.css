@@ -44,3 +44,53 @@ html.lenis, html.lenis body { height: auto; width: 100vw; overflow-x: hidden; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* ---- Accessibility ---- */
+
+/* Global safety net: honor the OS reduce-motion preference for every
+ * CSS-driven transition and animation. Framer-Motion entrance animations
+ * (which are CSS-based) are covered here; infinite loops that framer
+ * drives internally are gated per-component via usePrefersReducedMotion. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html.lenis, html.lenis body { scroll-behavior: auto !important; }
+}
+
+/* Skip-to-content link: hidden until focused, visible for keyboard users
+ * navigating the tab order (WCAG 2.4.1 Bypass Blocks). */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 1rem 2rem;
+  background: #10b981;
+  color: #09090b;
+  font-weight: bold;
+  border-radius: 0 0 0.5rem 0;
+  text-decoration: none;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Screen-reader-only: visually hidden but available to assistive tech
+ * (WCAG 1.3.1). Used to attach accessible names to icon-only controls. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

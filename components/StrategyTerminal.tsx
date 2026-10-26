@@ -88,13 +88,22 @@ const handleSubmit = () => {
                   <ChevronRight size={18} className="animate-pulse" />
                   <span className="text-emerald-500/80 uppercase tracking-tight">System Input Required:</span>
                 </div>
-                <textarea
-                  className="w-full bg-transparent border-none focus:ring-0 text-zinc-100 placeholder:text-zinc-800 resize-none flex-1 min-h-[200px] leading-relaxed"
-                  placeholder="Describe your operational bottleneck or data goal (e.g., I need to find the direct emails of 200 European SaaS founders...)"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  autoFocus
-                />
+<label
+                    id="bottleneck-label"
+                    htmlFor="bottleneck-input"
+                    className="sr-only"
+                  >
+                    Operational bottleneck or data goal
+                  </label>
+                  <textarea
+                    id="bottleneck-input"
+                    className="w-full bg-transparent border-none focus:ring-0 text-zinc-100 placeholder:text-zinc-800 resize-none flex-1 min-h-[200px] leading-relaxed"
+                    placeholder="Describe your operational bottleneck or data goal (e.g., I need to find the direct emails of 200 European SaaS founders...)"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    autoFocus
+                    aria-labelledby="bottleneck-label"
+                  />
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -158,14 +167,23 @@ const handleSubmit = () => {
                 
                 {status !== "confirmed" && (
                   <div className="flex flex-col sm:flex-row w-full max-w-md gap-3 pt-4">
-                    <input
-                      type="email"
-                      placeholder="name@company.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      disabled={status === "submitting"}
-                      className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-md px-5 py-4 focus:outline-none focus:border-emerald-500/50 text-zinc-100 transition-all font-mono placeholder:text-zinc-700 disabled:opacity-50"
-                    />
+<label
+                    id="visitor-email-label"
+                    htmlFor="visitor-email"
+                    className="sr-only"
+                  >
+                    Work email
+                  </label>
+                  <input
+                    id="visitor-email"
+                    type="email"
+                    placeholder="name@company.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={status === "submitting"}
+                    aria-labelledby="visitor-email-label"
+                    className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-md px-5 py-4 focus:outline-none focus:border-emerald-500/50 text-zinc-100 transition-all font-mono placeholder:text-zinc-700 disabled:opacity-50"
+                  />
                     <button 
                       onClick={handleSubmit}
                       disabled={status === "submitting"}

@@ -4,9 +4,13 @@ import React, { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
+import { usePrefersReducedMotion } from "@/lib/motion";
 
 function ParticleCloud({ count }: { count: number }) {
   const ref = useRef<THREE.Points>(null!);
+
+  // Stop the cloud spinning for users who request reduced motion.
+  const reduced = usePrefersReducedMotion();
   
   // Generate points in a sprawling disk/galaxy pattern
   const points = useMemo(() => {
@@ -35,7 +39,7 @@ function ParticleCloud({ count }: { count: number }) {
   }, [count]);
 
   useFrame((state, delta) => {
-    if (ref.current) {
+    if (ref.current && !reduced) {
       ref.current.rotation.y += delta * 0.04;
       ref.current.rotation.x += delta * 0.01;
     }
