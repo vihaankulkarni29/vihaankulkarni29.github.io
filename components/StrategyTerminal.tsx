@@ -97,7 +97,7 @@ const handleSubmit = () => {
                   </label>
                   <textarea
                     id="bottleneck-input"
-                    className="w-full bg-transparent border-none focus:ring-0 text-zinc-100 placeholder:text-zinc-800 resize-none flex-1 min-h-[200px] leading-relaxed"
+                    className="w-full bg-transparent border-none focus:ring-0 text-zinc-100 placeholder:text-zinc-400 resize-none flex-1 min-h-[200px] leading-relaxed"
                     placeholder="Describe your operational bottleneck or data goal (e.g., I need to find the direct emails of 200 European SaaS founders...)"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
@@ -159,8 +159,8 @@ const handleSubmit = () => {
                     {status === "confirmed" ? "Access Granted" : "Architecture Compiled"}
                   </h3>
                   <p className="text-zinc-500 max-w-md mx-auto leading-relaxed">
-                    {status === "confirmed" 
-                      ? "The implementation playbook has been sent to your inbox. Check your secure communication channel." 
+                    {status === "confirmed"
+                      ? "Your mail client should open with the playbook pre-filled. Send it to complete the request."
                       : "Strategy and implementation playbook has been generated. Enter your work email to receive the direct access link."}
                   </p>
                 </div>
@@ -182,7 +182,7 @@ const handleSubmit = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={status === "submitting"}
                     aria-labelledby="visitor-email-label"
-                    className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-md px-5 py-4 focus:outline-none focus:border-emerald-500/50 text-zinc-100 transition-all font-mono placeholder:text-zinc-700 disabled:opacity-50"
+                    className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-md px-5 py-4 focus:outline-none focus:border-emerald-500/50 text-zinc-100 transition-all font-mono placeholder:text-zinc-400 disabled:opacity-50"
                   />
                     <button 
                       onClick={handleSubmit}
