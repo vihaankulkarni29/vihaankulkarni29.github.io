@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, ChevronRight, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, ChevronRight, Loader2, ClipboardCopy } from "lucide-react";
 import { site } from "@/data/site";
 
 export default function StrategyTerminal() {
@@ -10,6 +10,7 @@ export default function StrategyTerminal() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "analyzing" | "captured" | "submitting" | "confirmed">("idle");
   const [loadingStep, setLoadingStep] = useState(0);
+  const [copied, setCopied] = useState(false);
 
   const steps = [
     "> Initializing System Analysis...",
@@ -40,6 +41,19 @@ const handleSubmit = () => {
       "_self"
     );
     setStatus("confirmed");
+  };
+
+  // Best-effort clipboard copy so the summary survives even if mailto is
+  // blocked by a browser or the visitor's email client refuses the link.
+  const copySummary = async () => {
+    const text = `Strategy Terminal Lead\n\nBottleneck:\n${input.trim()}\n\nVisitor email:\n${email.trim()}\n\nContact: ${site.contact.email}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Clipboard may be unavailable (non-secure context, older browser).
+    }
   };
 
   useEffect(() => {
@@ -154,16 +168,33 @@ const handleSubmit = () => {
                 <div className={`p-5 rounded-full transition-all duration-500 ${status === "confirmed" ? "bg-emerald-500 text-zinc-950 scale-110" : "bg-emerald-500/10 text-emerald-400"}`}>
                   <CheckCircle2 size={56} />
                 </div>
-                <div className="space-y-3">
+<div className="space-y-3">
                   <h3 className="text-2xl text-zinc-100 font-black uppercase tracking-[0.2em]">
                     {status === "confirmed" ? "Access Granted" : "Architecture Compiled"}
                   </h3>
                   <p className="text-zinc-500 max-w-md mx-auto leading-relaxed">
                     {status === "confirmed"
-                      ? "Your mail client should open with the playbook pre-filled. Send it to complete the request."
+                      ? "Your mail client should open with the playbook pre-filled. Send it to complete the request — or copy the summary below to paste anywhere."
                       : "Strategy and implementation playbook has been generated. Enter your work email to receive the direct access link."}
                   </p>
+                  {status === "confirmed" && (
+                    <p className="text-zinc-600 text-sm font-mono">
+                      Delivering to <span className="text-zinc-300">{site.contact.email}</span>
+                    </p>
+                  )}
                 </div>
+
+                {status === "confirmed" && (
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={copySummary}
+                    className="self-center px-6 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-md hover:border-emerald-500/40 hover:text-zinc-100 transition-all flex items-center gap-2 text-xs uppercase tracking-widest font-mono"
+                  >
+                    <ClipboardCopy size={14} />
+                    {copied ? "Copied to clipboard" : "Copy summary"}
+                  </motion.button>
+                )}
                 
                 {status !== "confirmed" && (
                   <div className="flex flex-col sm:flex-row w-full max-w-md gap-3 pt-4">
