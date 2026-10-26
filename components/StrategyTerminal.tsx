@@ -8,7 +8,7 @@ import { site } from "@/data/site";
 export default function StrategyTerminal() {
   const [input, setInput] = useState("");
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "analyzing" | "captured" | "submitting" | "confirmed">("idle");
+  const [status, setStatus] = useState<"idle" | "analyzing" | "captured" | "submitting" | "confirmed" | "error">("idle");
   const [loadingStep, setLoadingStep] = useState(0);
   const [copied, setCopied] = useState(false);
 
@@ -25,22 +25,38 @@ export default function StrategyTerminal() {
     setLoadingStep(0);
   };
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
     if (!email.trim() || !email.includes("@")) return;
+    setStatus("submitting");
 
-    // Static GitHub Pages site has no backend, so the only stable delivery
-    // path is a prefilled mailto: to the contact address. It carries the
-    // visitor's email and the bottleneck they described, so the lead is
-    // complete without any server or third-party form service.
-    const subject = encodeURIComponent("Strategy Terminal Lead");
-    const body = encodeURIComponent(
-      `Bottleneck:\n${input.trim()}\n\nVisitor email:\n${email.trim()}`
-    );
-    window.open(
-      `mailto:${site.contact.email}?subject=${subject}&body=${body}`,
-      "_self"
-    );
-    setStatus("confirmed");
+    // Real delivery: POST to Formspree (free, no server, no build config).
+    // Formspree returns 200 on success and 4xx on failure (e.g. missing
+    // fields, rate limit), so we can surface a real status instead of a
+    // hopeful "sent" message. The payload uses Formspree's field names.
+    try {
+      const res = await fetch("https://formspree.io/f/mvkkkzjn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: input.trim(),
+          email: email.trim(),
+        }),
+      });
+      if (!res.ok) throw new Error(`Formspree ${res.status}`);
+      setStatus("confirmed");
+    } catch {
+      // Network failure or Formspree rejected the submission. Fall back to
+      // mailto so the lead still reaches you, then surface the error.
+      setStatus("error");
+      const subject = encodeURIComponent("Strategy Terminal Lead");
+      const body = encodeURIComponent(
+        `Bottleneck:\n${input.trim()}\n\nVisitor email:\n${email.trim()}`
+      );
+      window.open(
+        `mailto:${site.contact.email}?subject=${subject}&body=${body}`,
+        "_self"
+      );
+    }
   };
 
   // Best-effort clipboard copy so the summary survives even if mailto is
@@ -158,24 +174,28 @@ const handleSubmit = () => {
               </motion.div>
             )}
 
-            {(status === "captured" || status === "submitting" || status === "confirmed") && (
+            {(status === "captured" || status === "submitting" || status === "confirmed" || status === "error") && (
               <motion.div
                 key="captured"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="flex-1 flex flex-col items-center justify-center text-center space-y-8"
               >
-                <div className={`p-5 rounded-full transition-all duration-500 ${status === "confirmed" ? "bg-emerald-500 text-zinc-950 scale-110" : "bg-emerald-500/10 text-emerald-400"}`}>
+                <div className={`p-5 rounded-full transition-all duration-500 ${status === "confirmed" ? "bg-emerald-500 text-zinc-950 scale-110" : status === "error" ? "bg-red-500/20 text-red-400" : "bg-emerald-500/10 text-emerald-400"}`}>
                   <CheckCircle2 size={56} />
                 </div>
-<div className="space-y-3">
+                <div className="space-y-3">
                   <h3 className="text-2xl text-zinc-100 font-black uppercase tracking-[0.2em]">
-                    {status === "confirmed" ? "Access Granted" : "Architecture Compiled"}
+                    {status === "confirmed" ? "Access Granted" : status === "error" ? "Delivery Failed" : status === "submitting" ? "Submitting..." : "Architecture Compiled"}
                   </h3>
                   <p className="text-zinc-500 max-w-md mx-auto leading-relaxed">
                     {status === "confirmed"
-                      ? "Your mail client should open with the playbook pre-filled. Send it to complete the request — or copy the summary below to paste anywhere."
-                      : "Strategy and implementation playbook has been generated. Enter your work email to receive the direct access link."}
+                      ? "Submitted to Formspree — you'll receive it at " + site.contact.email + ". Copy the summary to paste anywhere."
+                      : status === "error"
+                        ? "Formspree rejected the request and mailto opened as a fallback. Send the message to complete it."
+                        : status === "submitting"
+                          ? "Submitting to Formspree..."
+                          : "Strategy and implementation playbook has been generated. Enter your work email to receive the direct access link."}
                   </p>
                   {status === "confirmed" && (
                     <p className="text-zinc-600 text-sm font-mono">
